@@ -1,22 +1,10 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
-import { useStyletron } from "styletron-react";
-import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
-import navbar from "../components/Navbar"
-import { Button } from "baseui/button";
-import Lottie from 'lottie-react-web' 
 import {LightTheme, ThemeProvider, DarkTheme} from 'baseui';
-import arrowDown from '../assets/animations/scrollDown.json'
 import '@fortawesome/fontawesome-free/css/all.min.css'; 
 import 'bootstrap-css-only/css/bootstrap.min.css'; 
 import 'mdbreact/dist/css/mdb.css';
-import { MDBBtn, MDBContainer } from 'mdbreact'
-import { StyledLink } from "baseui/link";
 import {styled} from 'baseui';
-import BlackContainer from "../components/BlackContainer";
-import {Checkbox, STYLE_TYPE} from 'baseui/checkbox';
 import Navbar from "../components/Navbar";
 
 const THEME = {
@@ -42,10 +30,6 @@ const HeroContainer = styled('div', ({$theme}) => ({
 
 const IndexPage = () => {
   const [theme, setTheme] = useState(THEME.light);
-  const [checkboxes, setCheckboxes] = useState([
-    false,
-    false,
-  ]);
   
   return(
     <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>

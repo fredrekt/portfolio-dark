@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
-import Layout from '../components/layout'
 import SEO from '../components/seo'
-import navbar from '../components/Navbar'
-import { Link } from "gatsby";
 import HeaderPage from '../components/HeaderPage';
 import { MDBContainer, MDBRow, MDBCol } from 'mdbreact'
 import { ThemeProvider, DarkTheme, LightTheme } from 'baseui';
@@ -76,7 +73,9 @@ const AboutPage = () => {
                 <MDBRow>
                     <MDBCol md="12" lg="12">
                         <div className="my-5">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15703.872331734146!2d123.81861022739237!3d10.264155282724873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99d08fc35c237%3A0x9841502ea3d82016!2sLawaan%20III%2C%20Talisay%2C%20Cebu!5e0!3m2!1sen!2sph!4v1595642283821!5m2!1sen!2sph" width="100%" height="400" frameborder="0" style={{"border":0}} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                            <iframe
+                            title="developer's location" 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15703.872331734146!2d123.81861022739237!3d10.264155282724873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99d08fc35c237%3A0x9841502ea3d82016!2sLawaan%20III%2C%20Talisay%2C%20Cebu!5e0!3m2!1sen!2sph!4v1595642283821!5m2!1sen!2sph" width="100%" height="400" frameborder="0" style={{"border":0}} allowfullscreen="" aria-hidden="false"></iframe>
                         </div>
                         <div className="mt-5 mx-auto text-center w-50">
                             <h1 style={{ fontSize: `3.25rem`, lineHeight: `1.4` }}>

@@ -3,7 +3,6 @@ import HeaderPage from '../components/HeaderPage'
 import { MDBContainer } from 'mdbreact'
 import { Parallax } from 'react-parallax'
 import SEO from '../components/seo'
-import { Link } from 'gatsby'
 import Navbar from '../components/Navbar'
 import { ThemeProvider, DarkTheme, LightTheme } from 'baseui'
 
