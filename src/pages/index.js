@@ -32,10 +32,10 @@ const HeroHeader = styled('h1', ({$theme}) => ({
 }));
 
 const HeroContainer = styled('div', ({$theme}) => ({
-  height: `100%`,
+  height: `80%`,
   width: `100%`,
   display: `flex`,
-  position: `absolute`,
+  position: `fixed`,
   alignItems: `center`,
   justifyContent: `center`
 }))
