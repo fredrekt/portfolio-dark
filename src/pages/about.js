@@ -5,6 +5,7 @@ import { MDBContainer, MDBRow, MDBCol } from 'mdbreact'
 import { ThemeProvider, DarkTheme, LightTheme } from 'baseui';
 import Navbar from '../components/Navbar';
 import { Parallax } from 'react-parallax';
+import { StyledLink } from "baseui/link";
 
 const THEME = {
     light: 'light',
@@ -40,20 +41,21 @@ const AboutPage = () => {
                 <MDBRow className="my-5 py-5">
                     <MDBCol md="6">
                         <h1 style={{ fontSize: `3.25rem`, lineHeight: `1.4` }}>
-                            Hungry Sandwich Club is a creative studio specialising in motion 
-                            and digital design.
+                            I am a Full Stack Developer, love JavaScript 
+                            and also play first person shooter games.
                         </h1>
                     </MDBCol>
                     <MDBCol md="6">
                         <div className="mt-2">
                             <p style={content} className="lead">
-                            We tell stories. We build experiences. We explore all the ways 
-                            design can make us smile, scream, sing and think, understand and 
-                            care. We are interested in the whole journey. The big questions. 
-                            The tiny details. I am a Full Stack Developer.
+                            Mainly i love react. Would love to learn more about JavaScript. 
+                            Absolute would love to discover new technologies and build things 
+                            on my own. That's how i learn. Love to playing Apex Legends.
+                            Listening to music while i work equals productivity for me. 
                             </p>
                             <p style={content} className="lead">
-                            If you have a project or an idea in mind, say hello or call us +44 (0) 7972096337, and let’s see where it takes us.
+                            If you have a project or an idea in mind, don't be shy and send me  
+                            a <StyledLink style={content} href="/contact">message here</StyledLink>, from there let’s see where it takes us.
                             </p>
                         </div>
                     </MDBCol>
