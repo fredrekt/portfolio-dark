@@ -16,18 +16,28 @@ const THEME = {
 
 const ContactPage = () => {
     const [theme, setTheme] = useState(THEME.light);
-    const [value, setValue] = useState('');
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
     const [btnLoading, setBtnLoading] = useState(false)
 
     const loadingState = { 
         isLoading: btnLoading? true : false
     }
 
+    const { name, email, subject, message } = formData
+
+    const onChange = e => setFormData({ [e.target.name]: e.target.value })
+
     const onSubmit = e => {
         e.preventDefault();
         setBtnLoading(true);
         setTimeout(()=>{
             setBtnLoading(false)
+            alert({...formData})
         },1500)
     }
 
@@ -45,42 +55,50 @@ const ContactPage = () => {
                         <form onSubmit={(e)=>onSubmit(e)}>
                         <div className="mb-4">
                             <Input
-                                value={value}
-                                onChange={e => setValue(e.target.value)}
+                                name="name"
+                                value={name}
+                                onChange={e=>onChange(e)}
                                 placeholder="Your Name"
+                                clearable
                                 clearOnEscape
-                                cleareable
+                                type="text"
                                 size={SIZE.large}
                             />
                         </div>
                         <div className="my-4">
                             <Input
-                                value={value}
-                                onChange={e => setValue(e.target.value)}
+                                name="email"
+                                value={email}
+                                onChange={e=>onChange(e)}
                                 placeholder="Your Email"
+                                clearable
                                 clearOnEscape
-                                cleareable
+                                type="email"
                                 size={SIZE.large}
                             />
                         </div>
                         <div className="my-4">
                             <Input
-                                value={value}
-                                onChange={e => setValue(e.target.value)}
+                                name="subject"
+                                value={subject}
+                                onChange={e=>onChange(e)}
                                 placeholder="Your Subject"
+                                clearable
                                 clearOnEscape
-                                cleareable
+                                type="text"
                                 size={SIZE.large}
                             />
                         </div>
                         <div className="my-4">
                             <Textarea
-                                value={value}
-                                onChange={e => setValue(e.target.value)}
+                                name="message"
+                                value={message}
+                                onChange={e=>onChange(e)}
                                 size={SIZE.large}
-                                placeholder="Controlled Input"
+                                placeholder="Your Message"
                                 clearable
                                 clearOnEscape
+                                type="text"
                             />
                         </div>
                         <div className="my-4 pb-5">
