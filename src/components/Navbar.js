@@ -36,6 +36,11 @@ class Navbar extends React.Component {
       fontSize: `2rem`
     }
 
+    const active = {
+      textDecoration: `underline`,
+      textUnderlinePosition: `under`
+    }
+
     return (
       <div>
         <header>
@@ -50,22 +55,22 @@ class Navbar extends React.Component {
                   <MDBCollapse isOpen={this.state.collapse} navbar>
                     <MDBNavbarNav className="align-items-center" right>
                       <MDBNavItem>
-                        <Link style={styleColor} className="px-4" to="/about">
+                        <Link activeStyle={active} style={styleColor} className="px-4" to="/about">
                           About
                         </Link>
                       </MDBNavItem>
                       <MDBNavItem>
-                        <Link style={styleColor} className="px-4"to="/works">
+                        <Link activeStyle={active} style={styleColor} className="px-4"to="/works">
                           Work
                         </Link>
                       </MDBNavItem>
                       <MDBNavItem>
-                        <Link style={styleColor} className="px-4"to="/resume">
+                        <Link activeStyle={active} style={styleColor} className="px-4"to="/resume">
                           Resume
                         </Link>
                       </MDBNavItem>
                       <MDBNavItem>
-                        <Link style={styleColor} className="px-4"to="/contact">
+                        <Link activeStyle={active} style={styleColor} className="px-4"to="/contact">
                           Contact
                         </Link>
                       </MDBNavItem>
