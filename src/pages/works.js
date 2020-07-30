@@ -5,7 +5,6 @@ import { Parallax } from 'react-parallax'
 import SEO from '../components/seo'
 import Navbar from '../components/Navbar'
 import { ThemeProvider, DarkTheme, LightTheme } from 'baseui'
-import covid from '../images/covid.jpg'
 import { styled } from "styletron-react";
 import { StyledLink } from "baseui/link";
 import { Button } from "baseui/button";
