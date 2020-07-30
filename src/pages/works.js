@@ -85,7 +85,7 @@ const WorksPage = () => {
                     </MDBView>
                 </MDBCol>
                 <MDBCol className="mb-5" md="6" lg="6">
-                    <MDBView>
+                    <MDBView waves zoom>
                         <img src={`https://images.pexels.com/photos/3970330/pexels-photo-3970330.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500`} alt="" className="w-100"/>
                         <MDBMask className="flex-center" overlay="black-strong">
                             <div className="content-container white-text p-5">
@@ -107,7 +107,7 @@ const WorksPage = () => {
                     </MDBView>
                 </MDBCol>
                 <MDBCol className="mb-5" md="6" lg="6">
-                    <MDBView>
+                    <MDBView waves zoom>
                         <img src="https://images.pexels.com/photos/1226721/pexels-photo-1226721.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="" className="w-100"/>
                         <MDBMask className="flex-center" overlay="black-strong">
                             <div className="content-container white-text p-5">
@@ -129,7 +129,7 @@ const WorksPage = () => {
                     </MDBView>
                 </MDBCol>
                 <MDBCol className="mb-5" md="6" lg="6">
-                    <MDBView>
+                    <MDBView waves zoom>
                         <img src="https://images.pexels.com/photos/3602778/pexels-photo-3602778.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="" className="w-100"/>
                         <MDBMask className="flex-center" overlay="black-strong">
                             <div className="content-container white-text p-5">
