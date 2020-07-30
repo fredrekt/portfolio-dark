@@ -72,11 +72,10 @@ const WorksPage = () => {
                                     Trying to build a tool that will help 
                                     starting professionals/individuals 
                                     to have a Digital Portfolio and resume.
-                                    Maintain it and update it in real time.
-                                    by just showing the cases/data in which country 
-                                    they reside. Also promoted this web application to 
-                                    react out and connect with people to pray together 
-                                    in this time of crisis.
+                                    Developed the CMS by myself, cause i can.
+                                    Actually free and no membership costs.
+                                    Hopefully it'll help lots of starting 
+                                    freelancers out there.
                                 </Content>
                                 <StyledLink animateUnderline style={content} className="white-text" href={`https://dossiere.herokuapp.com/`}>
                                     See live {arrow}
@@ -87,11 +86,12 @@ const WorksPage = () => {
                 </MDBCol>
                 <MDBCol className="mb-5" md="6" lg="6">
                     <MDBView>
-                        <img src={covid} alt="" className="w-100"/>
+                        <img src={`https://images.pexels.com/photos/3970330/pexels-photo-3970330.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500`} alt="" className="w-100"/>
                         <MDBMask className="flex-center" overlay="black-strong">
                             <div className="content-container white-text p-5">
                                 <h1 className="mb-4">Corona Virus Tracker</h1>
-                                <Content className="lead mb-4">This project was more like a hackathon for me. 
+                                <Content className="lead mb-4">
+                                    This project was more like a hackathon for me. 
                                     I was trying to help people to be informed and 
                                     lessen the panic about the corona virus outbreak,
                                     by just showing the cases/data in which country 
@@ -99,7 +99,7 @@ const WorksPage = () => {
                                     react out and connect with people to pray together 
                                     in this time of crisis.
                                 </Content>
-                                <StyledLink animateUnderline style={content} className="white-text" href={`https://medishop.netlify.app/`}>
+                                <StyledLink animateUnderline style={content} className="white-text" href={`https://coronacountrytracker.netlify.app/`}>
                                     See live {arrow}
                                 </StyledLink>
                             </div>
@@ -112,15 +112,16 @@ const WorksPage = () => {
                         <MDBMask className="flex-center" overlay="black-strong">
                             <div className="content-container white-text p-5">
                                 <h1 className="mb-4">Digital Portfolio</h1>
-                                <Content className="lead mb-4">This project was more like a hackathon for me. 
-                                    I was trying to help people to be informed and 
-                                    lessen the panic about the corona virus outbreak,
-                                    by just showing the cases/data in which country 
-                                    they reside. Also promoted this web application to 
-                                    react out and connect with people to pray together 
-                                    in this time of crisis.
+                                <Content className="lead mb-4">
+                                    Built a Digital Portfolio for a client. A simple
+                                    & minimal design for her website. Took less than a 
+                                    week for me to develop, it was kinda easy especially
+                                    the client knows the fundamentals of design, and was 
+                                    straight forward to my work. Which really helped me
+                                    a lot to finish the project quickly and proudly. 
+                                    Go check it out!
                                 </Content>
-                                <StyledLink animateUnderline style={content} className="white-text" href={`https://medishop.netlify.app/`}>
+                                <StyledLink animateUnderline style={content} className="white-text" href={`https://www.joygaringo.com/`}>
                                     See live {arrow}
                                 </StyledLink>
                             </div>
@@ -133,13 +134,13 @@ const WorksPage = () => {
                         <MDBMask className="flex-center" overlay="black-strong">
                             <div className="content-container white-text p-5">
                                 <h1 className="mb-4">Medishop</h1>
-                                <Content className="lead mb-4">This project was more like a hackathon for me. 
-                                    I was trying to help people to be informed and 
-                                    lessen the panic about the corona virus outbreak,
-                                    by just showing the cases/data in which country 
-                                    they reside. Also promoted this web application to 
-                                    react out and connect with people to pray together 
-                                    in this time of crisis.
+                                <Content className="lead mb-4">
+                                    Our thesis project, first time i've ever used 
+                                    ReactJS into a real project. This was a challenge 
+                                    for me, time was closing in and we've had a lot of
+                                    revisions but we pulled it through despite i'm the 
+                                    frontend developer full time and backend. Made with 
+                                    love and passion, loved JavaScript instantly.
                                 </Content>
                                 <StyledLink animateUnderline style={content} className="white-text" href={`https://medishop.netlify.app/`}>
                                     See live {arrow}
