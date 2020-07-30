@@ -54,10 +54,9 @@ const ResumePage = () => {
                                         <h4>Udemy</h4>
                                         <h5>Machine Learning with JavaScript</h5>
                                         <ul className="list-unstyled skills-list">
-                                            <li>Understood Design Patterns</li> 
-                                            <li>Becoming Senior React Developer</li>
-                                            <li>Master React Components</li>
-                                            <li>Built custom hooks</li>
+                                            <li>Assembled machine learning algorithms</li> 
+                                            <li>Built applications using ml techniques</li>
+                                            <li>Learned Tensorflow JS</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -67,12 +66,11 @@ const ResumePage = () => {
                                     <div style={{ marginLeft: `1rem` }} className="resume-content">
                                         <h2>2017 - 2020</h2>
                                         <h4>Udemy</h4>
-                                        <h5>Advanced JavaScript Concepts</h5>
+                                        <h5>Angular - The Complete Guide</h5>
                                         <ul className="list-unstyled skills-list">
-                                            <li>Understood Design Patterns</li> 
-                                            <li>Becoming Senior React Developer</li>
-                                            <li>Master React Components</li>
-                                            <li>Built custom hooks</li>
+                                            <li>Learned TypeScript</li>
+                                            <li>Built angular web application</li>
+                                            <li>Became a MEAN Stack </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -114,10 +112,12 @@ const ResumePage = () => {
                                 <div style={color} className="resume-container">
                                     <div style={{ marginLeft: `1rem` }} className="resume-content">
                                         <h2>2019</h2>
-                                        <h4>Freelance</h4>
+                                        <h4>Freelancer</h4>
                                         <h5>Full Stack Developer</h5>
                                         <ul className="list-unstyled skills-list">
-                                            <li>Created CRUD Applications</li> 
+                                            <li>Created CRUD Applications</li>
+                                            <li>React Developer</li>
+                                            <li>PHP Developer</li> 
                                             <li>Programming Tutor</li>
                                             <li>Code Debugger</li>
                                         </ul>
@@ -134,9 +134,8 @@ const ResumePage = () => {
                                             <li>Worked on frontend</li> 
                                             <li>Learned ReactJS</li>
                                             <li>Google App Engine</li>
-                                            <li>Helped built branchify landing page</li>
-                                            <li>Worked on the project government (online forms for government)</li>
-                                            <li>Helped build mata fr landing page</li>
+                                            <li>Worked on Government Digital Forms</li>
+                                            <li>Helped build landing pages</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -173,6 +172,8 @@ const ResumePage = () => {
                                             <li>Php</li>
                                             <li>Python</li>
                                             <li>Strapi</li>
+                                            <li>Contentful</li>
+                                            <li>Airtable</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -186,6 +187,7 @@ const ResumePage = () => {
                                         <ul className="list-unstyled skills-list">
                                             <li>ReactJS</li> 
                                             <li>React Native</li>
+                                            <li>Redux</li>
                                             <li>GatsbyJS</li>
                                             <li>AngularJS</li>
                                             <li>VueJS</li>
@@ -279,11 +281,11 @@ const ResumePage = () => {
                                                             <li>Wondershare Filmora</li>
                                                             <li>Kubernetes</li>
                                                             <li>Blockchain</li>
-                                                            <li>Bower</li>
+                                                            <li>Shopify</li>
                                                             <li>Gulp.js</li>
                                                             <li>jQuery</li>
                                                             <li>Yarn</li>
-                                                            <li>Ajax</li>
+                                                            <li>CLI</li>
                                                             <li>NPM</li>
                                                         </ul>
                                                     </MDBCol>
