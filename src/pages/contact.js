@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import HeaderPage from '../components/HeaderPage'
-import { MDBContainer, MDBRow, MDBCol } from 'mdbreact'
+import { MDBContainer, MDBRow, MDBCol, MDBAnimation } from 'mdbreact'
 import SEO from '../components/seo'
 import { ThemeProvider, DarkTheme, LightTheme } from 'baseui';
 import Navbar from '../components/Navbar';
@@ -10,11 +10,29 @@ import ArrowRight from 'baseui/icon/arrow-right';
 import {Button} from 'baseui/button';
 import emailjs from 'emailjs-com';
 import ReCAPTCHA from "react-google-recaptcha";
+import {Toast, KIND} from 'baseui/toast';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const THEME = {
     light: 'light',
     dark: 'dark',
 };
+
+const toastSuccess = () => {
+    toast.dark(`Message Sent!`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        progressStyle: { 
+            background: '#fafafa'
+        },
+        });
+}
 
 const ContactPage = () => {
     const [theme, setTheme] = useState(THEME.light);
@@ -24,7 +42,9 @@ const ContactPage = () => {
         subject: '',
         message: ''
     });
+    const [captcha, setCaptcha] = useState('')
     const [btnLoading, setBtnLoading] = useState(false)
+    const [error, setError] = useState(false)
 
     const loadingState = { 
         isLoading: btnLoading? true : false
@@ -36,17 +56,29 @@ const ContactPage = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        setBtnLoading(true);
-        emailjs.sendForm('gmail', 'digital_portfolio', e.target, 'user_XIKYWP5J2mUApRI1C06BW')
-        .then((result) => {
-            console.log(result.text);
-            setTimeout(()=>{
-                setBtnLoading(false)
-            },1500)
-        }, (error) => {
-            console.log(error.text);
-            window.location.reload();
-        });
+        if(captcha.length <= 0 || captcha === null){
+            setError(true)
+        }
+        else{
+            setBtnLoading(true);
+            emailjs.sendForm('gmail', 'digital_portfolio', e.target, 'user_XIKYWP5J2mUApRI1C06BW')
+            .then((result) => {
+                console.log(result.text);
+                setTimeout(()=>{
+                    setBtnLoading(false)
+                    setFormData({
+                        name: '',
+                        email: '',
+                        subject: '',
+                        message: ''
+                    })
+                    toastSuccess();
+                },1500)
+            }, (error) => {
+                console.log(error.text);
+                window.location.reload();
+            });
+        }
     }
 
     return (
@@ -114,20 +146,26 @@ const ContactPage = () => {
                             />
                         </div>
                         <div className="my-4">
+                            <span style={{ display: error ? "inline" : "none" }}>
+                                <MDBAnimation type="slideInLeft">
+                                    <Toast kind={KIND.negative}>You need to verify before submitting</Toast>
+                                </MDBAnimation>
+                            </span>
                             <ReCAPTCHA
                                 sitekey="6LcOeLgZAAAAANHETknJoMT5qLG7Nl7h0X_leF7K"
-                                onChange={(value)=>console.log(value)}
+                                onChange={(value)=>setCaptcha(value)}
                             />
                         </div>
                         <div className="my-4 pb-5">
-                        <Button {...loadingState} endEnhancer={() => <ArrowRight size={24} />}>
-                            Send Message
-                        </Button>
+                            <Button {...loadingState} endEnhancer={() => <ArrowRight size={24} />}>
+                                Send Message
+                            </Button>
                         </div>
                         </form>
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>
+            <ToastContainer/>
         </div>
         </ThemeProvider>
     )
