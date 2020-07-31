@@ -69,7 +69,7 @@ const ResumePage = () => {
                                         <h5>Angular - The Complete Guide</h5>
                                         <ul className="list-unstyled skills-list">
                                             <li>Learned TypeScript</li>
-                                            <li>Built angular web application</li>
+                                            <li>Built Angular Web Applications</li>
                                             <li>Became a MEAN Stack </li>
                                         </ul>
                                     </div>
@@ -83,8 +83,8 @@ const ResumePage = () => {
                                         <h5>Front-End Developer</h5>
                                         <ul className="list-unstyled skills-list">
                                             <li>Built frontend less than 8 hours</li> 
-                                            <li>Collaborated with teammates</li>
-                                            <li>Came in 2nd Place</li>
+                                            <li>Used Roads and Geolocation API's</li>
+                                            <li>Automated process of Vehicle Clamping</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -103,7 +103,7 @@ const ResumePage = () => {
                                         <ul className="list-unstyled skills-list">
                                             <li>MERN Stack Development</li> 
                                             <li>CMS Development</li>
-                                            <li>Personal Blog Development</li>
+                                            <li>Landing Page Creator</li>
                                         </ul>
                                     </div>
                                 </div>
