@@ -2,6 +2,7 @@ import React from 'react';
 import { MDBNavbar, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBContainer } from 'mdbreact';
 import { Link } from 'gatsby';
 import { Button, KIND } from "baseui/button";
+import './hover.css'
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -37,8 +38,7 @@ class Navbar extends React.Component {
     }
 
     const active = {
-      textDecoration: `underline`,
-      textUnderlinePosition: `under`
+      borderBottom: `${theme === 'light' ? "2px solid #000": "2px solid #fff"}`
     }
 
     return (
@@ -55,24 +55,32 @@ class Navbar extends React.Component {
                   <MDBCollapse isOpen={this.state.collapse} navbar>
                     <MDBNavbarNav className="align-items-center" right>
                       <MDBNavItem>
-                        <Link activeStyle={active} style={styleColor} className="px-4" to="/about">
-                          About
-                        </Link>
+                        <span>
+                          <Link activeStyle={active} style={styleColor} className="mx-4" to="/about">
+                            About
+                          </Link>
+                        </span>
                       </MDBNavItem>
                       <MDBNavItem>
-                        <Link activeStyle={active} style={styleColor} className="px-4"to="/works">
-                          Work
-                        </Link>
+                        <span>
+                          <Link activeStyle={active} style={styleColor} className="mx-4"to="/works">
+                            Work
+                          </Link>
+                        </span>
                       </MDBNavItem>
                       <MDBNavItem>
-                        <Link activeStyle={active} style={styleColor} className="px-4"to="/resume">
-                          Resume
-                        </Link>
+                        <span>
+                          <Link activeStyle={active} style={styleColor} className="mx-4"to="/resume">
+                            Resume
+                          </Link>
+                        </span>
                       </MDBNavItem>
                       <MDBNavItem>
-                        <Link activeStyle={active} style={styleColor} className="px-4"to="/contact">
-                          Contact
-                        </Link>
+                        <span>
+                          <Link activeStyle={active} style={styleColor} className="mx-4"to="/contact">
+                            Contact
+                          </Link>
+                        </span>
                       </MDBNavItem>
                       <MDBNavItem>
                         <Button style={styleColor} className="px-4" kind={KIND.minimal} onClick={this.props.onClick}>
