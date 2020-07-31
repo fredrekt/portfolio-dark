@@ -8,6 +8,7 @@ import { Input, SIZE } from "baseui/input";
 import { Textarea } from "baseui/textarea";
 import ArrowRight from 'baseui/icon/arrow-right';
 import {Button} from 'baseui/button';
+import emailjs from 'emailjs-com';
 
 const THEME = {
     light: 'light',
@@ -35,10 +36,16 @@ const ContactPage = () => {
     const onSubmit = e => {
         e.preventDefault();
         setBtnLoading(true);
-        setTimeout(()=>{
-            setBtnLoading(false)
-            alert({...formData})
-        },1500)
+        emailjs.sendForm('gmail', 'digital_portfolio', e.target, 'user_XIKYWP5J2mUApRI1C06BW')
+        .then((result) => {
+            console.log(result.text);
+            setTimeout(()=>{
+                setBtnLoading(false)
+            },1500)
+        }, (error) => {
+            console.log(error.text);
+            window.location.reload();
+        });
     }
 
     return (
@@ -61,6 +68,7 @@ const ContactPage = () => {
                                 placeholder="Your Name"
                                 clearable
                                 clearOnEscape
+                                required
                                 type="text"
                                 size={SIZE.large}
                             />
@@ -71,6 +79,7 @@ const ContactPage = () => {
                                 value={email}
                                 onChange={e=>onChange(e)}
                                 placeholder="Your Email"
+                                required
                                 clearable
                                 clearOnEscape
                                 type="email"
@@ -83,6 +92,7 @@ const ContactPage = () => {
                                 value={subject}
                                 onChange={e=>onChange(e)}
                                 placeholder="Your Subject"
+                                required
                                 clearable
                                 clearOnEscape
                                 type="text"
@@ -96,6 +106,7 @@ const ContactPage = () => {
                                 onChange={e=>onChange(e)}
                                 size={SIZE.large}
                                 placeholder="Your Message"
+                                required
                                 clearable
                                 clearOnEscape
                                 type="text"
