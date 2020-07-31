@@ -115,7 +115,7 @@ const ContactPage = () => {
                         </div>
                         <div className="my-4">
                             <ReCAPTCHA
-                                sitekey="6LdtZrgZAAAAAOPI9L2kA5txXFjogcRC5duskwhT"
+                                sitekey="6LcOeLgZAAAAANHETknJoMT5qLG7Nl7h0X_leF7K"
                                 onChange={(value)=>console.log(value)}
                             />
                         </div>
