@@ -9,6 +9,7 @@ import { Textarea } from "baseui/textarea";
 import ArrowRight from 'baseui/icon/arrow-right';
 import {Button} from 'baseui/button';
 import emailjs from 'emailjs-com';
+import ReCAPTCHA from "react-google-recaptcha";
 
 const THEME = {
     light: 'light',
@@ -110,6 +111,12 @@ const ContactPage = () => {
                                 clearable
                                 clearOnEscape
                                 type="text"
+                            />
+                        </div>
+                        <div className="my-4">
+                            <ReCAPTCHA
+                                sitekey="6LdtZrgZAAAAAOPI9L2kA5txXFjogcRC5duskwhT"
+                                onChange={(value)=>console.log(value)}
                             />
                         </div>
                         <div className="my-4 pb-5">
