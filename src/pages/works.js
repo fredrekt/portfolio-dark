@@ -154,7 +154,7 @@ const WorksPage = () => {
                     <Parallax
                         bgImage={`https://images.pexels.com/photos/2653362/pexels-photo-2653362.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940`}
                         strength={500}>
-                        <div onMouseOver={()=>setHover(true)} onMouseLeave={()=>setHover(false)} style={{ height: 400, background: hover && "#000", transition: `1s` }}>
+                        <div onFocus={()=>console.log(`focused`)} onMouseOver={()=>setHover(true)} onMouseLeave={()=>setHover(false)} style={{ height: 400, background: hover && "#000", transition: `1s` }}>
                             <div className={`${!hover && 'd-none'} work-container flex-center white-text p-5`}>
                                 <MDBAnimation type="slideInUp">
                                 <h1>
