@@ -73,6 +73,7 @@ const ContactPage = () => {
                         message: ''
                     })
                     toastSuccess();
+                    setError(false);
                 },1500)
             }, (error) => {
                 console.log(error.text);
