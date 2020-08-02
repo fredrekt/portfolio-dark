@@ -35,7 +35,7 @@ const ResumePage = () => {
                             <MDBCol className="my-4" md="12" lg="12">
                                 <div style={color} className="resume-container">
                                     <div style={{ marginLeft: `1rem` }} className="resume-content">
-                                        <h2>2017 - 2020</h2>
+                                        <h2>2020</h2>
                                         <h4>Udemy</h4>
                                         <h5>Advanced React Patterns</h5>
                                         <ul className="list-unstyled skills-list">
@@ -64,7 +64,7 @@ const ResumePage = () => {
                             <MDBCol className="my-4" md="12" lg="12">
                                 <div style={color} className="resume-container">
                                     <div style={{ marginLeft: `1rem` }} className="resume-content">
-                                        <h2>2017 - 2020</h2>
+                                        <h2>2020</h2>
                                         <h4>Udemy</h4>
                                         <h5>Angular - The Complete Guide</h5>
                                         <ul className="list-unstyled skills-list">
@@ -83,7 +83,7 @@ const ResumePage = () => {
                                         <h5>Front-End Developer</h5>
                                         <ul className="list-unstyled skills-list">
                                             <li>Built frontend less than 8 hours</li> 
-                                            <li>Used Roads and Geolocation API's</li>
+                                            <li>Used Roads, Paypal & Geolocation API's</li>
                                             <li>Automated process of Vehicle Clamping</li>
                                         </ul>
                                     </div>
@@ -127,7 +127,7 @@ const ResumePage = () => {
                             <MDBCol className="my-4" md="12" lg="12">
                                 <div style={color} className="resume-container">
                                     <div style={{ marginLeft: `1rem` }} className="resume-content">
-                                        <h2>2017 - 2020</h2>
+                                        <h2>2019 - 2020</h2>
                                         <h4>Symph</h4>
                                         <h5>Full Stack Developer Intern</h5>
                                         <ul className="list-unstyled skills-list">
@@ -136,6 +136,7 @@ const ResumePage = () => {
                                             <li>Google App Engine</li>
                                             <li>Worked on Government Digital Forms</li>
                                             <li>Helped build landing pages</li>
+                                            <li>Hackathon: Facial Recoginition Application</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -265,7 +266,7 @@ const ResumePage = () => {
                                                         <ul className="list-unstyled skills-list">
                                                             <li>Git</li> 
                                                             <li>Machine Learning</li>
-                                                            <li>Wordpress</li>
+                                                            <li>Jamstack</li>
                                                             <li>Composer</li>
                                                             <li>PayMongo</li>
                                                             <li>Heroku</li>
@@ -282,8 +283,8 @@ const ResumePage = () => {
                                                             <li>Kubernetes</li>
                                                             <li>Blockchain</li>
                                                             <li>Shopify</li>
-                                                            <li>Gulp.js</li>
-                                                            <li>jQuery</li>
+                                                            <li>GraphCMS</li>
+                                                            <li>Prismic</li>
                                                             <li>Yarn</li>
                                                             <li>CLI</li>
                                                             <li>NPM</li>
