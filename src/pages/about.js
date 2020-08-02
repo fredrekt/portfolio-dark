@@ -13,15 +13,11 @@ const THEME = {
 };
 
 const AboutPage = () => {
-    const [theme, setTheme] = useState(theme === THEME.light ? THEME.light : THEME.dark);
-    
-    useEffect(() => {
-        if(typeof window !== 'undefined'){
-            localStorage.setItem('themeColor', theme)
-            setTheme(localStorage.getItem('themeColor'));
-        }            
-    }, [theme])
-
+    if(typeof window === 'undefined' || window === null){
+       console.log("undefined")
+    }
+    const selectedTheme =  localStorage.getItem('themeColor');
+    const [theme, setTheme] = useState(selectedTheme === THEME.light ? THEME.light : THEME.dark);
     const content = {
         fontSize: `1.3rem`,
         fontFamily: `'Biryani', sans-serif`
