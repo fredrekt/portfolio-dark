@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { Button } from "baseui/button";
 import { ThemeProvider, DarkTheme, LightTheme } from 'baseui';
 import SEO from "../components/seo"
-import HeaderPage from "../components/HeaderPage";
 import ArrowRight from 'baseui/icon/arrow-right';
 import { Link } from "gatsby";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";

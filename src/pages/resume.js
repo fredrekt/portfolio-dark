@@ -4,7 +4,6 @@ import Navbar from '../components/Navbar';
 import HeaderPage from '../components/HeaderPage';
 import { MDBContainer, MDBRow, MDBCol } from 'mdbreact'
 import { ThemeProvider, DarkTheme, LightTheme } from 'baseui';
-import { styled } from "styletron-react";
 import { Accordion, Panel } from "baseui/accordion";
 
 const THEME = {
