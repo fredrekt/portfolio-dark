@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SEO from '../components/seo'
 import Navbar from '../components/Navbar';
 import HeaderPage from '../components/HeaderPage';
@@ -12,11 +12,13 @@ const THEME = {
 };
 
 const ResumePage = () => {
-    const selectedTheme = localStorage.getItem('themeColor')
-    const [theme, setTheme] = useState(selectedTheme === THEME.light ? THEME.light : THEME.dark);
-    if(typeof window !== 'undefined'){
-        localStorage.setItem('themeColor', theme)
-    }
+    const [theme, setTheme] = useState(localStorage.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
+   
+    useEffect(() => {
+        if(typeof window !== 'undefined'){
+            localStorage.setItem('themeColor', theme)
+        }            
+    }, [theme])
 
     const color = {
         borderLeft: `${theme === THEME.light ? "1px solid #000" : "1px solid #fff"}`

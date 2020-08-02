@@ -1,4 +1,4 @@
-import React, { useState } from 'react' 
+import React, { useState, useEffect } from 'react' 
 import HeaderPage from '../components/HeaderPage'
 import { MDBContainer, MDBRow, MDBCol, MDBView, MDBMask, MDBAnimation } from 'mdbreact'
 import { Parallax } from 'react-parallax'
@@ -34,13 +34,14 @@ const Content = styled('p', props => ({
 }))
 
 const WorksPage = () => {
-    const selectedTheme = localStorage.getItem('themeColor')
-    const [theme, setTheme] = useState(selectedTheme === THEME.light ? THEME.light : THEME.dark);
+    const [theme, setTheme] = useState(localStorage.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
     const [hover, setHover] =useState(false)
 
-    if(typeof window !== 'undefined'){
-        localStorage.setItem('themeColor', theme)
-    }
+    useEffect(() => {
+        if(typeof window !== 'undefined'){
+            localStorage.setItem('themeColor', theme)
+        }            
+    }, [theme])
 
     const content = {
         fontSize: `1.2rem`,

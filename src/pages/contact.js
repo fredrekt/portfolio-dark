@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import HeaderPage from '../components/HeaderPage'
 import { MDBContainer, MDBRow, MDBCol, MDBAnimation } from 'mdbreact'
 import SEO from '../components/seo'
@@ -35,8 +35,7 @@ const toastSuccess = () => {
 }
 
 const ContactPage = () => {
-    const selectedTheme = localStorage.getItem('themeColor')
-    const [theme, setTheme] = useState(selectedTheme === THEME.light ? THEME.light : THEME.dark);
+    const [theme, setTheme] = useState(localStorage.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -46,10 +45,12 @@ const ContactPage = () => {
     const [captcha, setCaptcha] = useState('')
     const [btnLoading, setBtnLoading] = useState(false)
     const [error, setError] = useState(false)
-
-    if(typeof window !== 'undefined'){
-        localStorage.setItem('themeColor', theme)
-    }
+     
+    useEffect(() => {
+        if(typeof window !== 'undefined'){
+            localStorage.setItem('themeColor', theme)
+        }            
+    }, [theme])
 
     const loadingState = { 
         isLoading: btnLoading? true : false
