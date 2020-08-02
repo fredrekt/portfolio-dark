@@ -38,7 +38,9 @@ const WorksPage = () => {
     const [theme, setTheme] = useState(selectedTheme === THEME.light ? THEME.light : THEME.dark);
     const [hover, setHover] =useState(false)
 
-    localStorage.setItem('themeColor', theme)
+    if(typeof window !== 'undefined'){
+        localStorage.setItem('themeColor', theme)
+    }
 
     const content = {
         fontSize: `1.2rem`,

@@ -15,7 +15,9 @@ const THEME = {
 const AboutPage = () => {
     const selectedTheme = localStorage.getItem('themeColor')
     const [theme, setTheme] = useState(selectedTheme === THEME.light ? THEME.light : THEME.dark);
-    localStorage.setItem('themeColor', theme)
+    if(typeof window !== 'undefined'){
+        localStorage.setItem('themeColor', theme)
+    }
     
     const content = {
         fontSize: `1.3rem`,

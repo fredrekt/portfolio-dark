@@ -47,7 +47,9 @@ const ContactPage = () => {
     const [btnLoading, setBtnLoading] = useState(false)
     const [error, setError] = useState(false)
 
-    localStorage.setItem('themeColor', theme)
+    if(typeof window !== 'undefined'){
+        localStorage.setItem('themeColor', theme)
+    }
 
     const loadingState = { 
         isLoading: btnLoading? true : false

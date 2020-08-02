@@ -31,8 +31,10 @@ const HeroContainer = styled('div', ({$theme}) => ({
 const IndexPage = () => {
   const selectedTheme =  localStorage.getItem('themeColor')
   const [theme, setTheme] = useState(selectedTheme);
-  localStorage.setItem('themeColor', theme)
-  
+  if(typeof window !== 'undefined'){
+    localStorage.setItem('themeColor', theme)
+  }
+    
   return(
     <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
     <SEO title="Home" />  
