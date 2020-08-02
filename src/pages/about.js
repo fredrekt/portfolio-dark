@@ -13,14 +13,14 @@ const THEME = {
 };
 
 const AboutPage = () => {
+    const [theme, setTheme] = useState(theme === THEME.light ? THEME.light : THEME.dark);
+    
     useEffect(() => {
         if(typeof window !== 'undefined'){
             localStorage.setItem('themeColor', theme)
             setTheme(localStorage.getItem('themeColor'));
         }            
     }, [theme])
-
-    const [theme, setTheme] = useState(theme === THEME.light ? THEME.light : THEME.dark);
 
     const content = {
         fontSize: `1.3rem`,
