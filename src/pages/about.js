@@ -13,8 +13,10 @@ const THEME = {
 };
 
 const AboutPage = () => {
-    const [theme, setTheme] = useState(THEME.light);
-
+    const selectedTheme = localStorage.getItem('themeColor')
+    const [theme, setTheme] = useState(selectedTheme === THEME.light ? THEME.light : THEME.dark);
+    localStorage.setItem('themeColor', theme)
+    
     const content = {
         fontSize: `1.3rem`,
         fontFamily: `'Biryani', sans-serif`

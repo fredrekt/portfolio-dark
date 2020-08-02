@@ -34,8 +34,11 @@ const Content = styled('p', props => ({
 }))
 
 const WorksPage = () => {
-    const [theme, setTheme] = useState(THEME.light);
+    const selectedTheme = localStorage.getItem('themeColor')
+    const [theme, setTheme] = useState(selectedTheme === THEME.light ? THEME.light : THEME.dark);
     const [hover, setHover] =useState(false)
+
+    localStorage.setItem('themeColor', theme)
 
     const content = {
         fontSize: `1.2rem`,

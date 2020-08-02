@@ -35,7 +35,8 @@ const toastSuccess = () => {
 }
 
 const ContactPage = () => {
-    const [theme, setTheme] = useState(THEME.light);
+    const selectedTheme = localStorage.getItem('themeColor')
+    const [theme, setTheme] = useState(selectedTheme === THEME.light ? THEME.light : THEME.dark);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -45,6 +46,8 @@ const ContactPage = () => {
     const [captcha, setCaptcha] = useState('')
     const [btnLoading, setBtnLoading] = useState(false)
     const [error, setError] = useState(false)
+
+    localStorage.setItem('themeColor', theme)
 
     const loadingState = { 
         isLoading: btnLoading? true : false

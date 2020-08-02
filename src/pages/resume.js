@@ -12,7 +12,9 @@ const THEME = {
 };
 
 const ResumePage = () => {
-    const [theme, setTheme] = useState(THEME.light);
+    const selectedTheme = localStorage.getItem('themeColor')
+    const [theme, setTheme] = useState(selectedTheme === THEME.light ? THEME.light : THEME.dark);
+    localStorage.setItem('themeColor', theme)
 
     const color = {
         borderLeft: `${theme === THEME.light ? "1px solid #000" : "1px solid #fff"}`
