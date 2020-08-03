@@ -17,6 +17,9 @@ const HeroHeader = styled('h1', ({$theme}) => ({
   fontFamily: `'Playball', cursive!important`,
   textAlign: `center`,
   fontWeight: `900`,
+  "@media screen and (max-width: 540px)": {
+    fontSize: `4rem`
+  }
 }));
 
 const HeroContainer = styled('div', ({$theme}) => ({
