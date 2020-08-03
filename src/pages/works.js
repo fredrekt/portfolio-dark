@@ -43,16 +43,22 @@ const WorksPage = () => {
         }            
     }, [theme])
 
-    const content = {
-        fontSize: `1.2rem`,
-        fontFamily: `'Biryani', sans-serif`
-    }
-
-    const header = {
+    const HeaderFooter = styled('h1', {
         fontSize: `5rem`,
         fontFamily: `'Lato', sans-serif`,
-        letterSpacing: `-.01em`
-    }
+        letterSpacing: `-.01em`,
+        "@media screen and (max-width: 540px)":{
+            fontSize: `3rem`
+        }
+    })
+
+    const HeaderFooterContent = styled('p', {
+        fontSize: `1.2rem`,
+        fontFamily: `'Biryani', sans-serif`,
+        "@media screen and (max-width: 540px)":{
+            fontSize: `1rem`
+        }
+    })
 
     const arrow = <ArrowRight size={32} />
 
@@ -71,8 +77,8 @@ const WorksPage = () => {
                         <img src={`https://images.pexels.com/photos/2781195/pexels-photo-2781195.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500`} alt="" className="w-100"/>
                         <MDBMask className="flex-center" overlay="black-strong">
                             <div className="content-container white-text p-5">
-                                <h1 className="mb-4">Dossiere</h1>
-                                <Content className="lead mb-4">
+                                <h1 className="h1-responsive mb-lg-4 mb-md-4 mb-2">Dossiere</h1>
+                                <Content className="lead mb-md-4 mb-2 mb-lg-4">
                                     This project was a personal one for me. 
                                     Trying to build a tool that will help 
                                     starting professionals/individuals 
@@ -82,7 +88,7 @@ const WorksPage = () => {
                                     Hopefully it'll help lots of starting 
                                     freelancers out there.
                                 </Content>
-                                <StyledLink animateUnderline style={content} className="white-text" href={`https://dossiere.herokuapp.com/`}>
+                                <StyledLink animateUnderline className="content-container-link white-text" href={`https://dossiere.herokuapp.com/`}>
                                     See live {arrow}
                                 </StyledLink>
                             </div>
@@ -94,8 +100,8 @@ const WorksPage = () => {
                         <img src={`https://images.pexels.com/photos/3970330/pexels-photo-3970330.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500`} alt="" className="w-100"/>
                         <MDBMask className="flex-center" overlay="black-strong">
                             <div className="content-container white-text p-5">
-                                <h1 className="mb-4">Corona Virus Tracker</h1>
-                                <Content className="lead mb-4">
+                                <h1 className="h1-responsive mb-lg-4 mb-md-4 mb-2">Corona Virus Tracker</h1>
+                                <Content className="lead mb-md-4 mb-2 mb-lg-4">
                                     This project was more like a hackathon for me. 
                                     I was trying to help people to be informed and 
                                     lessen the panic about the corona virus outbreak,
@@ -104,7 +110,7 @@ const WorksPage = () => {
                                     react out and connect with people to pray together 
                                     in this time of crisis.
                                 </Content>
-                                <StyledLink animateUnderline style={content} className="white-text" href={`https://coronacountrytracker.netlify.app/`}>
+                                <StyledLink animateUnderline className="content-container-link white-text" href={`https://coronacountrytracker.netlify.app/`}>
                                     See live {arrow}
                                 </StyledLink>
                             </div>
@@ -116,8 +122,8 @@ const WorksPage = () => {
                         <img src="https://images.pexels.com/photos/1226721/pexels-photo-1226721.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="" className="w-100"/>
                         <MDBMask className="flex-center" overlay="black-strong">
                             <div className="content-container white-text p-5">
-                                <h1 className="mb-4">Digital Portfolio</h1>
-                                <Content className="lead mb-4">
+                                <h1 className="h1-responsive mb-lg-4 mb-md-4 mb-2">Digital Portfolio</h1>
+                                <Content className="lead mb-md-4 mb-2 mb-lg-4">
                                     Built a Digital Portfolio for a client. A simple
                                     & minimal design for her website. Took less than a 
                                     week for me to develop, it was kinda easy especially
@@ -126,7 +132,7 @@ const WorksPage = () => {
                                     a lot to finish the project quickly and proudly. 
                                     Go check it out!
                                 </Content>
-                                <StyledLink animateUnderline style={content} className="white-text" href={`https://www.joygaringo.com/`}>
+                                <StyledLink animateUnderline className="content-container-link white-text" href={`https://www.joygaringo.com/`}>
                                     See live {arrow}
                                 </StyledLink>
                             </div>
@@ -138,8 +144,8 @@ const WorksPage = () => {
                         <img src="https://images.pexels.com/photos/3602778/pexels-photo-3602778.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="" className="w-100"/>
                         <MDBMask className="flex-center" overlay="black-strong">
                             <div className="content-container white-text p-5">
-                                <h1 className="mb-4">Medishop</h1>
-                                <Content className="lead mb-4">
+                                <h1 className="h1-responsive mb-lg-4 mb-md-4 mb-2">Medishop</h1>
+                                <Content className="lead mb-md-4 mb-2 mb-lg-4">
                                     Our thesis project, first time i've ever used 
                                     ReactJS into a real project. This was a challenge 
                                     for me, time was closing in and we've had a lot of
@@ -147,7 +153,7 @@ const WorksPage = () => {
                                     frontend developer full time and backend. Made with 
                                     love and passion, loved JavaScript instantly.
                                 </Content>
-                                <StyledLink animateUnderline style={content} className="white-text" href={`https://medishop.netlify.app/`}>
+                                <StyledLink animateUnderline className="content-container-link white-text" href={`https://medishop.netlify.app/`}>
                                     See live {arrow}
                                 </StyledLink>
                             </div>
@@ -163,10 +169,10 @@ const WorksPage = () => {
                         <div onFocus={()=>console.log(`focused`)} onMouseOver={()=>setHover(true)} onMouseLeave={()=>setHover(false)} style={{ height: 400, background: hover && "#000", transition: `1s` }}>
                             <div className={`${!hover && 'd-none'} work-container flex-center white-text p-5`}>
                                 <MDBAnimation type="slideInUp">
-                                <h1>
-                                    <span className="mx-4">Code</span>  | 
-                                    <span className="mx-4">Play</span>  | 
-                                    <span className="mx-4">Gym</span>
+                                <h1 className="h1-responsive">
+                                    <span className="mx-lg-4 mx-md-4 mx-0">Code</span>  | 
+                                    <span className="mx-lg-4 mx-md-4 mx-2">Play</span>  | 
+                                    <span className="mx-lg-4 mx-md-4 mx-2">Gym</span>
                                 </h1>
                                 </MDBAnimation>
                             </div>
@@ -176,13 +182,13 @@ const WorksPage = () => {
             </MDBRow>
             <MDBRow className="py-5">
                 <MDBCol md="12" lg="12">
-                    <h1 className="text-center" style={header}>
+                    <HeaderFooter className="text-center">
                         Got a project in mind?
-                    </h1>
+                    </HeaderFooter>
                     <div className="d-flex flex-column align-items-center">
-                        <p style={content} className="lead">
+                        <HeaderFooterContent className="lead text-center">
                             Tell me about it, maybe i can help with it.
-                        </p>
+                        </HeaderFooterContent>
                         <Link to="/contact">
                             <Button  endEnhancer={() => <ArrowRight size={24} />}>
                                 Send Message 

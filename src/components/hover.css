@@ -44,6 +44,10 @@ span > a {
     visibility: visible;
     transform: scaleX(1);
   }
+  .content-container-link {
+    font-size: 1.2rem!important;
+    font-family: 'Biryani', sans-serif!important;
+  }
   /* // Extra small devices (portrait phones, less than 576px)
   // No media query for `xs` since this is the default in Bootstrap */
 
@@ -51,6 +55,15 @@ span > a {
   @media screen and (max-width: 540px) { 
     .responsive-mobile{
       display: inline;
+    }
+    .hidden-mobile{
+      display: none;
+    }
+    .content-container > p {
+      font-size: .7rem;
+    }
+    .content-container-link {
+      font-size: .8rem!important;
     }
   }
 
