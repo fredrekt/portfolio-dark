@@ -69,7 +69,7 @@ const AboutPage = () => {
         <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>
             {setTheme(theme === THEME.light ? THEME.dark : THEME.light)
-            localStorage.setItem('themeColor', theme === THEME.light ? THEME.dark : THEME.light)}
+            localStorage.setItem('themeColor', globalWindow === THEME.light ? THEME.dark : THEME.light)}
           } color={theme}/>
             <MDBContainer fluid className="px-4 pb-5">
                 <HeaderPage text="Me, Myself & I"/>

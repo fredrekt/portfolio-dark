@@ -46,7 +46,7 @@ const IndexPage = () => {
       <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>{
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
-            localStorage.setItem('themeColor', selectedTheme === THEME.light ? THEME.dark : THEME.light)  }
+            localStorage.setItem('themeColor', globalWindow === THEME.light ? THEME.dark : THEME.light)  }
           } color={theme}/>
         {/* <Button
           onClick={() =>
