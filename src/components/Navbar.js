@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDBNavbar, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBContainer } from 'mdbreact';
+import { MDBNavbar, MDBNavbarNav, MDBCollapse, MDBNavItem, MDBContainer, MDBIcon } from 'mdbreact';
 import { Link } from 'gatsby';
 import { Button, KIND } from "baseui/button";
 import './hover.css'
@@ -97,7 +97,18 @@ class Navbar extends React.Component {
                       </MDBNavItem>
                       <MDBNavItem>
                         <Button style={styleColor} className="px-4" kind={KIND.minimal} onClick={this.props.onClick}>
-                          {theme === 'light' ? "Toggle Dark": "Toggle Light"}
+                          {theme === 'light' ? 
+                          (
+                            <>
+                              Dark Mode <MDBIcon icon="moon mx-2"/>
+                            </>
+                          )
+                          : 
+                          (
+                            <>
+                              Light Mode <MDBIcon far icon="moon mx-2"/>
+                            </>
+                          )}
                         </Button>
                       </MDBNavItem>
                     </MDBNavbarNav>
