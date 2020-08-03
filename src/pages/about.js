@@ -13,13 +13,14 @@ const THEME = {
 };
 
 const AboutPage = () => {
-    const windowLocal = typeof window !== 'undefined' && window.localStorage
     const [selectedTheme, setSelectedTheme] = useState('')
     const [theme, setTheme] = useState(window.localStorage.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
 
     useEffect(() => {
         //localStorage.setItem('themeColor', theme)
-        windowLocal.getItem('themeColor')
+        if(typeof window !== `undefined`){
+            window.localStorage.getItem('themeColor')
+        }
     }, [])
 
     if(window === null || window === 'undefined'){
