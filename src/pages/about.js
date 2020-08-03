@@ -14,7 +14,7 @@ const THEME = {
 
 const AboutPage = () => {
     const [selectedTheme, setSelectedTheme] = useState('')
-    const [theme, setTheme] = useState(window.localStorage.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
+    const [theme, setTheme] = useState(localStorage.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
 
     useEffect(() => {
         //localStorage.setItem('themeColor', theme)
@@ -22,10 +22,6 @@ const AboutPage = () => {
             window.localStorage.getItem('themeColor')
         }
     }, [])
-
-    if(window === null || window === 'undefined'){
-        return null;
-    }
 
     const AboutHeader = styled('h1', {
         fontSize: `3.25rem`,
