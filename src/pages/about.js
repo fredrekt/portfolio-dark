@@ -40,11 +40,11 @@ const AboutPage = () => {
     const AboutStyledLink = styled('a', {
         fontSize: `1.3rem`,
         fontFamily: `'Biryani', sans-serif`,
-        color: `#000`,
+        color: `${theme === 'light' ? "#000" : "#fff"}`,
         textDecoration: `underline`,
         textUnderlinePosition: `under`,
         ":hover":{
-            color: `#000`
+            color: `${theme === 'light' ? "#000" : "#fff"}`
         },
         "@media screen and (max-width: 540px)": {
             fontSize: `1rem`
