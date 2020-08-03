@@ -13,13 +13,13 @@ const THEME = {
 };
 
 const AboutPage = () => {
-    let globalWindow = window
+    let globalWindow 
     const [selectedTheme, setSelectedTheme] = useState('')
-    const [theme, setTheme] = useState(globalWindow.localStorage.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
+    const [theme, setTheme] = useState(globalWindow === THEME.light ? THEME.light : THEME.dark);
 
     useEffect(() => {
         //localStorage.setItem('themeColor', theme)
-        globalWindow.localStorage.getItem('themeColor')
+        globalWindow = localStorage.getItem('themeColor')
     }, [])
 
     const AboutHeader = styled('h1', {
