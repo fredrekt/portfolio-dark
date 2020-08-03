@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SEO from '../components/seo'
 import HeaderPage from '../components/HeaderPage';
 import { MDBContainer, MDBRow, MDBCol } from 'mdbreact'
@@ -13,11 +13,12 @@ const THEME = {
 };
 
 const AboutPage = () => {
-    if(typeof window === 'undefined' || window === null){
-       console.log("undefined")
-    }
-    const selectedTheme =  localStorage.getItem('themeColor');
+    const [selectedTheme, setSelectedTheme] = useState(undefined)
     const [theme, setTheme] = useState(selectedTheme === THEME.light ? THEME.light : THEME.dark);
+
+    useEffect(() => {
+        setSelectedTheme(localStorage.getItem('themeColor'))
+    }, [])
 
     const AboutHeader = styled('h1', {
         fontSize: `3.25rem`,
