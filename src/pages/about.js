@@ -14,8 +14,8 @@ const THEME = {
 
 const AboutPage = () => {
     const windowLocal = typeof window !== 'undefined' && window.localStorage
-    const [selectedTheme, setSelectedTheme] = useState(undefined)
-    const [theme, setTheme] = useState(windowLocal.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
+    const [selectedTheme, setSelectedTheme] = useState('')
+    const [theme, setTheme] = useState(window.localStorage.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
 
     useEffect(() => {
         //localStorage.setItem('themeColor', theme)
