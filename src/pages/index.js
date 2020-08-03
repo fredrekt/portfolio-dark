@@ -39,10 +39,6 @@ const IndexPage = () => {
   useEffect(() => {
     globalWindow = localStorage.getItem('themeColor');
   }, [])
-
-  if(window === null || window === 'undefined'){
-    return null;
-  }
     
   return(
     <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
