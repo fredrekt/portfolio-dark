@@ -3,6 +3,7 @@ import { MDBNavbar, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDB
 import { Link } from 'gatsby';
 import { Button, KIND } from "baseui/button";
 import './hover.css'
+import HamburgerMenu from 'react-hamburger-menu'
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -51,7 +52,19 @@ class Navbar extends React.Component {
                       Spicy Developer
                     </strong>
                   </Link>
-                  <MDBNavbarToggler onClick={this.onClick} />
+                  {/* <MDBNavbarToggler onClick={this.onClick} /> */}
+                  <HamburgerMenu
+                      className="responsive-mobile mx-2"
+                      isOpen={this.state.collapse}
+                      menuClicked={this.onClick}
+                      width={24}
+                      height={18}
+                      strokeWidth={2}
+                      rotate={0}
+                      color={theme === 'dark' ? "white" : "black"}
+                      borderRadius={0}
+                      animationDuration={0.5}
+                  />     
                   <MDBCollapse isOpen={this.state.collapse} navbar>
                     <MDBNavbarNav className="align-items-center" right>
                       <MDBNavItem>
