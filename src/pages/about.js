@@ -13,14 +13,13 @@ const THEME = {
 };
 
 const AboutPage = () => {
-    let globalWindow 
+    const initialColor = () => window.localStorage.getItem('themeColor')
     const [selectedTheme, setSelectedTheme] = useState('')
-    const [theme, setTheme] = useState(localStorage.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
+    const [theme, setTheme] = useState(initialColor);
 
     useEffect(() => {
-        //localStorage.setItem('themeColor', theme)
-        globalWindow = localStorage.getItem('themeColor')
-    })
+        window.localStorage.setItem('themeColor', theme)
+    },[theme])
 
     const AboutHeader = styled('h1', {
         fontSize: `3.25rem`,
@@ -68,9 +67,8 @@ const AboutPage = () => {
         <SEO title="About"/>
         <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>
-            {setTheme(theme === THEME.light ? THEME.dark : THEME.light)
-            localStorage.setItem('themeColor', globalWindow === THEME.light ? THEME.dark : THEME.light)}
-          } color={theme}/>
+            setTheme(theme === THEME.light ? THEME.dark : THEME.light)
+            } color={theme}/>
             <MDBContainer fluid className="px-4 pb-5">
                 <HeaderPage text="Me, Myself & I"/>
                 <MDBRow className="pb-5 pb-lg-0 pb-md-0">

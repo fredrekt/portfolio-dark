@@ -32,21 +32,20 @@ const HeroContainer = styled('div', ({$theme}) => ({
 }))
 
 const IndexPage = () => {
-  let globalWindow
+  const initialColor = () => window.localStorage.getItem('themeColor') || "light"
   const [selectedTheme, setSelectedTheme] = useState(undefined)
-  const [theme, setTheme] = useState(globalWindow === THEME.light ? THEME.light : THEME.dark);
+  const [theme, setTheme] = useState(initialColor);
 
   useEffect(() => {
-    globalWindow = localStorage.getItem('themeColor');
-  })
+    window.localStorage.setItem('themeColor', theme)
+  },[theme])
     
   return(
     <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
     <SEO title="Home" />  
       <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
-        <Navbar onClick={() =>{
+        <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
-            localStorage.setItem('themeColor', globalWindow === THEME.light ? THEME.dark : THEME.light)  }
           } color={theme}/>
         {/* <Button
           onClick={() =>
