@@ -13,13 +13,14 @@ const THEME = {
 };
 
 const AboutPage = () => {
+    const windowGlobal = typeof window !== 'undefined' && window
     const [selectedTheme, setSelectedTheme] = useState(undefined)
-    const [theme, setTheme] = useState(localStorage.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
+    const [theme, setTheme] = useState(windowGlobal.localStorage.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
 
-    useEffect(() => {
-        //localStorage.setItem('themeColor', theme)
-        setSelectedTheme(localStorage.getItem('themeColor'))
-    }, [])
+    // useEffect(() => {
+    //     //localStorage.setItem('themeColor', theme)
+    //     setSelectedTheme(localStorage.getItem('themeColor'))
+    // }, [])
 
     const AboutHeader = styled('h1', {
         fontSize: `3.25rem`,
@@ -68,7 +69,7 @@ const AboutPage = () => {
         <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>
             {setTheme(theme === THEME.light ? THEME.dark : THEME.light)
-            localStorage.setItem('themeColor', theme === THEME.light ? THEME.dark : THEME.light)}
+            windowGlobal.localStorage.setItem('themeColor', theme === THEME.light ? THEME.dark : THEME.light)}
           } color={theme}/>
             <MDBContainer fluid className="px-4 pb-5">
                 <HeaderPage text="Me, Myself & I"/>
