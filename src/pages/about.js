@@ -14,9 +14,10 @@ const THEME = {
 
 const AboutPage = () => {
     const [selectedTheme, setSelectedTheme] = useState(undefined)
-    const [theme, setTheme] = useState(selectedTheme === THEME.light ? THEME.light : THEME.dark);
+    const [theme, setTheme] = useState(localStorage.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
 
     useEffect(() => {
+        //localStorage.setItem('themeColor', theme)
         setSelectedTheme(localStorage.getItem('themeColor'))
     }, [])
 
@@ -66,7 +67,8 @@ const AboutPage = () => {
         <SEO title="About"/>
         <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>
-            setTheme(theme === THEME.light ? THEME.dark : THEME.light)
+            {setTheme(theme === THEME.light ? THEME.dark : THEME.light)
+            localStorage.setItem('themeColor', theme === THEME.light ? THEME.dark : THEME.light)}
           } color={theme}/>
             <MDBContainer fluid className="px-4 pb-5">
                 <HeaderPage text="Me, Myself & I"/>
