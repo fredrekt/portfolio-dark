@@ -32,7 +32,7 @@ const HeroContainer = styled('div', ({$theme}) => ({
 }))
 
 const IndexPage = () => {
-  const initialColor = () => window.localStorage.getItem('themeColor') || "light"
+  const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor') || "light"
   const [selectedTheme, setSelectedTheme] = useState(undefined)
   const [theme, setTheme] = useState(initialColor);
 

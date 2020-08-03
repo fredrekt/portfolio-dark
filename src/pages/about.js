@@ -13,7 +13,7 @@ const THEME = {
 };
 
 const AboutPage = () => {
-    const initialColor = () => window.localStorage.getItem('themeColor')
+    const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor')
     const [selectedTheme, setSelectedTheme] = useState('')
     const [theme, setTheme] = useState(initialColor);
 

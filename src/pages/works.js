@@ -34,7 +34,7 @@ const Content = styled('p', props => ({
 }))
 
 const WorksPage = () => {
-    const initialColor = () => window.localStorage.getItem('themeColor')
+    const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor')
     const [theme, setTheme] = useState(initialColor);
     const [hover, setHover] =useState(false)
 
