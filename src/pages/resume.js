@@ -12,13 +12,12 @@ const THEME = {
 };
 
 const ResumePage = () => {
-    const [theme, setTheme] = useState(localStorage.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
+    const [selectedTheme, setSelectedTheme] = useState(undefined)
+    const [theme, setTheme] = useState(selectedTheme === THEME.light ? THEME.light : THEME.dark);
    
     useEffect(() => {
-        if(typeof window !== 'undefined'){
-            localStorage.setItem('themeColor', theme)
-        }            
-    }, [theme])
+        setSelectedTheme(localStorage.getItem('themeColor'))
+    }, [])
 
     const color = {
         borderLeft: `${theme === THEME.light ? "1px solid #000" : "1px solid #fff"}`

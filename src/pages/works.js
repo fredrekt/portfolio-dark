@@ -34,14 +34,13 @@ const Content = styled('p', props => ({
 }))
 
 const WorksPage = () => {
-    const [theme, setTheme] = useState(localStorage.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
+    const [selectedTheme, setSelectedTheme] = useState(undefined)
+    const [theme, setTheme] = useState(selectedTheme === THEME.light ? THEME.light : THEME.dark);
     const [hover, setHover] =useState(false)
 
     useEffect(() => {
-        if(typeof window !== 'undefined'){
-            localStorage.setItem('themeColor', theme)
-        }            
-    }, [theme])
+        setSelectedTheme(localStorage.getItem('themeColor'))
+    }, [])
 
     const HeaderFooter = styled('h1', {
         fontSize: `5rem`,

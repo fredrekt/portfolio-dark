@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import SEO from "../components/seo"
 import {LightTheme, ThemeProvider, DarkTheme} from 'baseui';
 import '@fortawesome/fontawesome-free/css/all.min.css'; 
@@ -32,11 +32,12 @@ const HeroContainer = styled('div', ({$theme}) => ({
 }))
 
 const IndexPage = () => {
-  const selectedTheme =  localStorage.getItem('themeColor')
-  const [theme, setTheme] = useState(selectedTheme);
-  if(typeof window !== 'undefined'){
-    localStorage.setItem('themeColor', theme)
-  }
+  const [selectedTheme, setSelectedTheme] = useState(undefined)
+  const [theme, setTheme] = useState(selectedTheme === THEME.light ? THEME.light : THEME.dark);
+
+  useEffect(() => {
+    setSelectedTheme(localStorage.getItem('themeColor'))
+  }, [])
     
   return(
     <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>

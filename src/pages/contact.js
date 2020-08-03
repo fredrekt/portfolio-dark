@@ -35,7 +35,8 @@ const toastSuccess = () => {
 }
 
 const ContactPage = () => {
-    const [theme, setTheme] = useState(localStorage.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
+    const [selectedTheme, setSelectedTheme] = useState(undefined)
+    const [theme, setTheme] = useState(selectedTheme === THEME.light ? THEME.light : THEME.dark);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -47,10 +48,8 @@ const ContactPage = () => {
     const [error, setError] = useState(false)
      
     useEffect(() => {
-        if(typeof window !== 'undefined'){
-            localStorage.setItem('themeColor', theme)
-        }            
-    }, [theme])
+        setSelectedTheme(localStorage.getItem('themeColor'))
+    }, [])
 
     const loadingState = { 
         isLoading: btnLoading? true : false
