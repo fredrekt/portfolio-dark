@@ -22,6 +22,10 @@ const AboutPage = () => {
         windowLocal.getItem('themeColor')
     }, [])
 
+    if(window === null || window === 'undefined'){
+        return null;
+    }
+
     const AboutHeader = styled('h1', {
         fontSize: `3.25rem`,
         lineHeight: `1.4`,
