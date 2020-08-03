@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Button } from "baseui/button";
 import { ThemeProvider, DarkTheme, LightTheme } from 'baseui';
 import SEO from "../components/seo"
@@ -33,7 +33,13 @@ const SubError = styled('p', {
 })
 
 const NotFoundPage = () => {
-  const [theme, setTheme] = useState(THEME.light);
+  const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor')
+  const [theme, setTheme] = useState(initialColor);
+
+  useEffect(() => {
+    window.localStorage.setItem('themeColor', theme)  
+  },[theme])
+
   return(
     <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
       <SEO title="Page Not Found" />
