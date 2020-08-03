@@ -32,13 +32,17 @@ const HeroContainer = styled('div', ({$theme}) => ({
 }))
 
 const IndexPage = () => {
-  const windowGlobal = typeof window !== 'undefined' && window
+  const windowLocal = typeof window !== 'undefined' && window.localStorage
   const [selectedTheme, setSelectedTheme] = useState(undefined)
-  const [theme, setTheme] = useState(windowGlobal.localStorage.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
+  const [theme, setTheme] = useState(windowLocal.getItem('themeColor') === THEME.light ? THEME.light : THEME.dark);
 
-  // useEffect(() => {
-  //   setSelectedTheme(localStorage.getItem('themeColor'))
-  // }, [])
+  useEffect(() => {
+    windowLocal.getItem('themeColor');
+  }, [])
+
+  if(window === null || window === 'undefined'){
+    return null;
+  }
     
   return(
     <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
@@ -46,7 +50,7 @@ const IndexPage = () => {
       <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>{
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
-            windowGlobal.localStorage.setItem('themeColor', selectedTheme === THEME.light ? THEME.dark : THEME.light)  }
+            windowLocal.setItem('themeColor', selectedTheme === THEME.light ? THEME.dark : THEME.light)  }
           } color={theme}/>
         {/* <Button
           onClick={() =>
