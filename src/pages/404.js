@@ -17,13 +17,19 @@ const THEME = {
 const HeaderError = styled('h1', {
   fontSize: `5rem`,
   fontFamily: `'Lato', sans-serif`,
-  letterSpacing: `-.01em`
+  letterSpacing: `-.01em`,
+  "@media screen and (max-width: 540px)": {
+    fontSize: `3rem`
+  }
 })
 
 const SubError = styled('p', {
   fontSize: `1.4rem`,
   fontFamily: `'Biryani', sans-serif`,
-  letterSpacing: `-.01em`
+  letterSpacing: `-.01em`,
+  "@media screen and (max-width: 540px)": {
+    fontSize: `1rem`
+  }
 })
 
 const NotFoundPage = () => {
@@ -52,7 +58,7 @@ const NotFoundPage = () => {
               </p> */}
             </MDBCol>
             <MDBCol md="6" lg="6">
-              <img className="w-100" src={errorImg} alt=""/>
+              <img className="w-100 hidden-mobile" src={errorImg} alt=""/>
             </MDBCol>
           </MDBRow>
         </MDBContainer>
