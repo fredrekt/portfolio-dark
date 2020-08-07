@@ -1,5 +1,5 @@
 import React from 'react'
-import { StaticQuery } from "gatsby";
+import { StaticQuery } from 'gatsby';
 
 const Backend = () => {
     return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StaticQuery } from 'gatsby'
+import { StaticQuery } from 'gatsby';
 
 const Frontend = () => (
     <StaticQuery 
@@ -14,7 +14,7 @@ const Frontend = () => (
         `}
         render={data => (
             <>
-                {data.gcms.skills.map(skill => <li>{skill.skill}</li>)} 
+            {data.gcms.skills.map(skill => <li>{skill.skill}</li>)} 
             </>
             )}
         />
