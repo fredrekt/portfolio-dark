@@ -5,6 +5,14 @@ import HeaderPage from '../components/HeaderPage';
 import { MDBContainer, MDBRow, MDBCol } from 'mdbreact'
 import { ThemeProvider, DarkTheme, LightTheme } from 'baseui';
 import { Accordion, Panel } from "baseui/accordion";
+import Frontend from '../components/skills/Frontend';
+import Backend from '../components/skills/Backend';
+import Frameworks from '../components/skills/Frameworks';
+import DataHandling from '../components/skills/DataHandling';
+import Design from '../components/skills/Design';
+import Languages from '../components/skills/Languages';
+import LeftMisc from '../components/skills/LeftMisc';
+import RightMisc from '../components/skills/RightMisc';
 
 const THEME = {
     light: 'light',
@@ -157,12 +165,13 @@ const ResumePage = () => {
                                         <h4>Frontend</h4>
                                         {/* <h5>Full Stack Developer</h5> */}
                                         <ul className="list-unstyled skills-list">
-                                            <li>Sass</li> 
+                                            {/* <li>Sass</li> 
                                             <li>CSS</li>
                                             <li>Material Bootstrap</li>
                                             <li>Styled Components</li>
                                             <li>Styletron</li>
-                                            <li>Tailwind CSS</li>
+                                            <li>Tailwind CSS</li> */}
+                                            <Frontend/>
                                         </ul>
                                     </div>
                                 </div>
@@ -174,12 +183,13 @@ const ResumePage = () => {
                                         <h4>Backend</h4>
                                         {/* <h5>Full Stack Developer</h5> */}
                                         <ul className="list-unstyled skills-list">
-                                            <li>NodeJS</li> 
+                                            {/* <li>NodeJS</li> 
                                             <li>Php</li>
                                             <li>Python</li>
                                             <li>Strapi</li>
                                             <li>Contentful</li>
-                                            <li>Airtable</li>
+                                            <li>Airtable</li> */}
+                                            <Backend/>
                                         </ul>
                                     </div>
                                 </div>
@@ -191,7 +201,7 @@ const ResumePage = () => {
                                         <h4>Framework & Libraries</h4>
                                         {/* <h5>Full Stack Developer</h5> */}
                                         <ul className="list-unstyled skills-list">
-                                            <li>ReactJS</li> 
+                                            {/* <li>ReactJS</li> 
                                             <li>React Native</li>
                                             <li>Redux</li>
                                             <li>GatsbyJS</li>
@@ -202,7 +212,8 @@ const ResumePage = () => {
                                             <li>Spring Boot</li>
                                             <li>Laravel</li>
                                             <li>Flutter</li>
-                                            <li>NextJS</li>
+                                            <li>NextJS</li> */}
+                                            <Frameworks/>
                                         </ul>
                                     </div>
                                 </div>
@@ -214,7 +225,7 @@ const ResumePage = () => {
                                         <h4>Data Handling</h4>
                                         {/* <h5>Full Stack Developer</h5> */}
                                         <ul className="list-unstyled skills-list">
-                                            <li>MongoDB</li>
+                                            {/* <li>MongoDB</li>
                                             <li>GraphQL</li> 
                                             <li>Firestore</li>
                                             <li>PostgreSQL</li>
@@ -223,7 +234,8 @@ const ResumePage = () => {
                                             <li>MySQL</li>
                                             <li>SQLite</li>
                                             <li>Firebase</li>
-                                            <li>Apollo GraphQL</li>
+                                            <li>Apollo GraphQL</li> */}
+                                            <DataHandling/>
                                         </ul>
                                     </div>
                                 </div>
@@ -235,11 +247,12 @@ const ResumePage = () => {
                                         <h4>Design</h4>
                                         {/* <h5>Full Stack Developer</h5> */}
                                         <ul className="list-unstyled skills-list">
-                                            <li>Photoshop</li> 
+                                            {/* <li>Photoshop</li> 
                                             <li>Adobe XD</li>
                                             <li>Figma</li>
                                             <li>Tailblocks</li>
-                                            <li>Lightroom</li>
+                                            <li>Lightroom</li> */}
+                                            <Design/>
                                         </ul>
                                     </div>
                                 </div>
@@ -251,11 +264,12 @@ const ResumePage = () => {
                                         <h4>Languages</h4>
                                         {/* <h5>Full Stack Developer</h5> */}
                                         <ul className="list-unstyled skills-list">
-                                            <li>Javascript</li> 
+                                            {/* <li>Javascript</li> 
                                             <li>TypeScript</li>
                                             <li>Python</li>
                                             <li>PHP</li>
-                                            <li>Java</li>
+                                            <li>Java</li> */}
+                                            <Languages/>
                                         </ul>
                                     </div>
                                 </div>
@@ -269,7 +283,7 @@ const ResumePage = () => {
                                                 <MDBRow>
                                                     <MDBCol md="6" lg="6">
                                                         <ul className="list-unstyled skills-list">
-                                                            <li>Git</li> 
+                                                            {/* <li>Git</li> 
                                                             <li>Machine Learning</li>
                                                             <li>Jamstack</li>
                                                             <li>Composer</li>
@@ -278,12 +292,13 @@ const ResumePage = () => {
                                                             <li>Github</li>
                                                             <li>Gatsby Cloud</li>
                                                             <li>Google App Engine</li>
-                                                            <li>Netlify</li>
+                                                            <li>Netlify</li> */}
+                                                            <LeftMisc/>
                                                         </ul>
                                                     </MDBCol>
                                                     <MDBCol md="6" lg="6">
                                                         <ul className="list-unstyled skills-list">
-                                                            <li>Docker</li> 
+                                                            {/* <li>Docker</li> 
                                                             <li>Wondershare Filmora</li>
                                                             <li>Kubernetes</li>
                                                             <li>Blockchain</li>
@@ -292,7 +307,8 @@ const ResumePage = () => {
                                                             <li>Prismic</li>
                                                             <li>Yarn</li>
                                                             <li>CLI</li>
-                                                            <li>NPM</li>
+                                                            <li>NPM</li> */}
+                                                            <RightMisc/>
                                                         </ul>
                                                     </MDBCol>
                                                 </MDBRow>
