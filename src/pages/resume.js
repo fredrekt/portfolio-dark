@@ -21,7 +21,6 @@ const THEME = {
 
 const ResumePage = () => {
     const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor')
-    const [selectedTheme, setSelectedTheme] = useState(undefined)
     const [theme, setTheme] = useState(initialColor);
    
     useEffect(() => {
