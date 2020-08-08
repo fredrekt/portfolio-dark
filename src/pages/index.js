@@ -24,7 +24,7 @@ const HeroHeader = styled('h1', ({$theme}) => ({
 
 
 const IndexPage = () => {
-  const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor') || "light"
+  const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor')
   const [theme, setTheme] = useState(initialColor);
 
   useEffect(() => {
