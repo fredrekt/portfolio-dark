@@ -1,24 +1,20 @@
 import React from 'react'
-import { StaticQuery } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 
 const Design = () => {
-    return (
-        <StaticQuery 
-             query={graphql`
-                query{
-                    gcms {
-                        skills(where: {skillCategory_some: {category_contains: "design"}}, orderBy: id_ASC) {
-                        skill
-                        }
-                    }
+    const data = useStaticQuery(graphql`
+        query{
+            gcms {
+                skills(where: {skillCategory_some: {category_contains: "design"}}, orderBy: id_ASC) {
+                skill
                 }
-            `}
-            render={data => (
-                <>
-                {data.gcms.skills.map(skill => <li>{skill.skill}</li>)}
-                </>
-            )}
-        />
+            }
+        }
+    `)
+    return (
+        <>
+        {data.gcms.skills.map(skill => <li>{skill.skill}</li>)}
+        </>
     )
 }
 
