@@ -22,23 +22,25 @@ const HeroHeader = styled('h1', ({$theme}) => ({
   }
 }));
 
-const HeroContainer = styled('div', ({$theme}) => ({
-  height: `80%`,
-  width: `100%`,
-  display: `flex`,
-  position: `fixed`,
-  alignItems: `center`,
-  justifyContent: `center`
-}))
 
 const IndexPage = () => {
   const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor') || "light"
-  const [selectedTheme, setSelectedTheme] = useState(undefined)
   const [theme, setTheme] = useState(initialColor);
 
   useEffect(() => {
     window.localStorage.setItem('themeColor', theme)
   },[theme])
+
+  const HeroContainer = styled('div', ({$theme}) => ({
+    height: `81%`,
+    width: `100%`,
+    display: `flex`,
+    position: `fixed`,
+    alignItems: `center`,
+    justifyContent: `center`,
+    background: theme === THEME.light ? "#fff" : "#000", 
+    color: theme === THEME.light ? "#000" : "#fff"
+  }))
     
   return(
     <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
@@ -47,14 +49,7 @@ const IndexPage = () => {
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
           } color={theme}/>
-        {/* <Button
-          onClick={() =>
-            setTheme(theme === THEME.light ? THEME.dark : THEME.light)
-          }
-        >
-          {theme === THEME.light ? "toggle dark" : "toggle light"}
-        </Button> */}
-        <HeroContainer style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }}>
+        <HeroContainer>
           <HeroHeader>
             Fred Garingo
           </HeroHeader>
