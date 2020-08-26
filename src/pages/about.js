@@ -14,11 +14,10 @@ const THEME = {
 
 const AboutPage = () => {
     const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor')
-    const [selectedTheme, setSelectedTheme] = useState('')
     const [theme, setTheme] = useState(initialColor);
 
     useEffect(() => {
-        window.localStorage.setItem('themeColor', theme)
+        typeof window !== `undefined` && window.localStorage.setItem('themeColor', theme)
     },[theme])
 
     const AboutHeader = styled('h1', {

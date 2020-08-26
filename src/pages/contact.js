@@ -48,7 +48,7 @@ const ContactPage = () => {
     const [error, setError] = useState(false)
      
     useEffect(() => {
-        window.localStorage.setItem('themeColor', theme)
+        typeof window !== `undefined` && window.localStorage.setItem('themeColor', theme)
     },[theme])
 
     const loadingState = { 

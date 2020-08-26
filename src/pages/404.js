@@ -37,7 +37,7 @@ const NotFoundPage = () => {
   const [theme, setTheme] = useState(initialColor);
 
   useEffect(() => {
-    window.localStorage.setItem('themeColor', theme)  
+    typeof window !== `undefined` && window.localStorage.setItem('themeColor', theme)  
   },[theme])
 
   return(

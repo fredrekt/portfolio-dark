@@ -22,7 +22,7 @@ const WorksPage = () => {
     const [hover, setHover] =useState(false)
 
     useEffect(() => {
-        window.localStorage.setItem('themeColor', theme)
+        typeof window !== `undefined` && window.localStorage.setItem('themeColor', theme)
     },[theme])
 
     const HeaderFooter = styled('h1', {
