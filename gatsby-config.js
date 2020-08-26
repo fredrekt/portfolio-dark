@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Fred Garingo`,
-    description: `My Personal Digital Portfolio, made using gatsby. An Informative way of getting a job or exposing youself to many oppurtunities.`,
+    description: `My Personal Digital Portfolio, made using gatsby. An Informative way of getting a job or exposing myself to many oppurtunities.`,
     author: `Fredrick Garingo`,
   },
   plugins: [
