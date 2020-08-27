@@ -3,6 +3,7 @@ import {Card, StyledBody, StyledAction} from 'baseui/card';
 import {StyledLink} from 'baseui/link';
 import { useStaticQuery, graphql } from 'gatsby';
 import { MDBCol } from 'mdbreact';
+import Markdown from 'markdown-to-jsx'
 
 const BlogCards = () => {
     const data = useStaticQuery(graphql`
@@ -11,7 +12,7 @@ const BlogCards = () => {
                 blogs {
                     id
                     content{
-                        html
+                        markdown
                     }
                 }
             }
@@ -27,7 +28,13 @@ const BlogCards = () => {
                 title={blog.title && blog.title}
             >
                 <StyledBody>
-                {blog.description && blog.description}
+                    {/* <Markdown>
+                        {blog.description && blog.description}
+                        {blog.content.markdown}
+                    </Markdown> */}
+                    <Markdown>
+                        {blog.content.markdown}
+                    </Markdown>
                 </StyledBody>
                 <StyledAction>
                 <StyledLink

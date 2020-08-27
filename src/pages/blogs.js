@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { ThemeProvider, DarkTheme, LightTheme } from 'baseui';
 import SEO from '../components/seo';
 import Navbar from '../components/Navbar';
-import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
+import { MDBContainer, MDBRow } from 'mdbreact';
 import HeaderPage from '../components/HeaderPage';
-import {Card, StyledBody, StyledAction} from 'baseui/card';
-import {StyledLink} from 'baseui/link';
-import {Button} from 'baseui/button'
 import BlogCards from '../components/blog/BlogCards';
 
 const THEME = {
