@@ -2,7 +2,7 @@ import React from 'react'
 import {Card, StyledBody, StyledAction} from 'baseui/card';
 import {StyledLink} from 'baseui/link';
 import { useStaticQuery, graphql } from 'gatsby';
-import { MDBCol } from 'mdbreact';
+import { MDBCol, MDBRow } from 'mdbreact';
 import Markdown from 'markdown-to-jsx'
 
 const BlogCards = () => {
@@ -11,30 +11,29 @@ const BlogCards = () => {
             gcms{
                 blogs {
                     id
-                    content{
-                        markdown
-                    }
+                    title
+                    description
+                    createdAt
+                    blogCategory
+                    preview{
+                        url
+                    }   
                 }
             }
         }
     `)
+    
     return (
         <>
         {data.gcms.blogs.map(blog => 
-        <MDBCol className="py-4"md="4" lg="4">
+        <MDBCol className="py-4"md="3" lg="3">
             <Card
                 key={blog.id}
                 headerImage={blog.preview && blog.preview.url}
-                title={blog.title && blog.title}
+                title={blog.title}
             >
                 <StyledBody>
-                    {/* <Markdown>
-                        {blog.description && blog.description}
-                        {blog.content.markdown}
-                    </Markdown> */}
-                    <Markdown>
-                        {blog.content.markdown}
-                    </Markdown>
+                    {blog.description && blog.description}
                 </StyledBody>
                 <StyledAction>
                 <StyledLink
