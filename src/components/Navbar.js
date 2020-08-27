@@ -90,6 +90,13 @@ class Navbar extends React.Component {
                       </MDBNavItem>
                       <MDBNavItem>
                         <span>
+                          <Link activeStyle={active} style={styleColor} className="mx-4"to="/blogs">
+                            Blog
+                          </Link>
+                        </span>
+                      </MDBNavItem>
+                      <MDBNavItem>
+                        <span>
                           <Link activeStyle={active} style={styleColor} className="mx-4"to="/contact">
                             Contact
                           </Link>
