@@ -28,7 +28,8 @@ const BlogPage = () => {
             } color={theme}/>
             <MDBContainer fluid className="px-4">
                 <HeaderPage text="Blogs"/>
-                <h1>My Collection</h1>
+            </MDBContainer>
+            <MDBContainer fluid className="px-4">
                 <MDBRow className="pb-5">
                     <BlogCards/>
                 </MDBRow>

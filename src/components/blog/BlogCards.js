@@ -1,8 +1,9 @@
 import React from 'react'
-import {Card, StyledBody, StyledAction} from 'baseui/card';
-import {StyledLink} from 'baseui/link';
 import { useStaticQuery, graphql } from 'gatsby';
-import { MDBCol } from 'mdbreact';
+import { MDBCol, MDBContainer } from 'mdbreact';
+import Markdown from 'markdown-to-jsx';
+import {Accordion, Panel} from 'baseui/accordion';
+import Moment from 'react-moment';
 
 const BlogCards = () => {
     const data = useStaticQuery(graphql`
@@ -14,6 +15,9 @@ const BlogCards = () => {
                     description
                     createdAt
                     blogCategory
+                    content{
+                        markdown
+                    }
                     preview{
                         url
                     }   
@@ -22,29 +26,34 @@ const BlogCards = () => {
         }
     `)
     
+    const blogs = data.gcms.blogs.map(blog => 
+        <Panel title={blog.title}>
+            <MDBContainer>
+                <div className="blog-header">
+                    <h1 className="display-3">{blog.title}</h1>
+                    <div className="d-flex justify-content-between pb-5">
+                        <h3 className="h3-responsive text-capitalize">{blog.blogCategory}</h3>
+                        <h3 className="h5-responsive grey-text text-capitalize">
+                            <Moment format="MMM DD, YYYY">
+                                {blog.createdAt}
+                            </Moment>
+                        </h3>
+                    </div>
+                </div>
+                <Markdown className="h3-responsive">
+                    {blog.content.markdown}
+                </Markdown>
+            </MDBContainer>
+        </Panel>    
+    )
+
     return (
         <>
-        {data.gcms.blogs.map(blog => 
-        <MDBCol className="py-4"md="3" lg="3">
-            <Card
-                key={blog.id}
-                headerImage={blog.preview && blog.preview.url}
-                title={blog.title}
-            >
-                <StyledBody>
-                    {blog.description && blog.description}
-                </StyledBody>
-                <StyledAction>
-                <StyledLink
-                href={`/blog/${blog.id}`}
-                animateUnderline
-                >
-                Read Blog
-                </StyledLink>
-                </StyledAction>
-            </Card>
+        <MDBCol size="8">
+            <Accordion renderAll>
+                {blogs}
+            </Accordion>
         </MDBCol>
-        )}
         </>
     )
 }
