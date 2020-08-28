@@ -2,8 +2,7 @@ import React from 'react'
 import {Card, StyledBody, StyledAction} from 'baseui/card';
 import {StyledLink} from 'baseui/link';
 import { useStaticQuery, graphql } from 'gatsby';
-import { MDBCol, MDBRow } from 'mdbreact';
-import Markdown from 'markdown-to-jsx'
+import { MDBCol } from 'mdbreact';
 
 const BlogCards = () => {
     const data = useStaticQuery(graphql`
