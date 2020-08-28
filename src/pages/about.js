@@ -17,12 +17,7 @@ const AboutPage = () => {
     const [theme, setTheme] = useState(initialColor);
 
     useEffect(() => {
-        if(initialColor === null || initialColor.length < 0 || window.localStorage.getItem("themeColor") === null){
-            typeof window !== `undefined` && window.localStorage.setItem('themeColor', 'light')
-        }
-        else{
-            typeof window !== `undefined` && window.localStorage.setItem('themeColor', theme)
-        }
+        typeof window !== `undefined` && window.localStorage.setItem('themeColor', theme)
     },[theme])
 
     const AboutHeader = styled('h1', {

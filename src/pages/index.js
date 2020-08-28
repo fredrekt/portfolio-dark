@@ -28,7 +28,7 @@ const IndexPage = () => {
   const [theme, setTheme] = useState(initialColor);
 
   useEffect(() => {
-    typeof window !== `undefined` && window.localStorage.setItem('themeColor', theme === "light" ? "light" : "dark")
+    typeof window !== `undefined` && window.localStorage.setItem('themeColor', theme)
   },[theme])
 
   const HeroContainer = styled('div', ({$theme}) => ({
