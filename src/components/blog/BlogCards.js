@@ -31,7 +31,7 @@ const BlogCards = () => {
             <MDBContainer>
                 <div className="blog-header">
                     <h1 className="display-3">{blog.title}</h1>
-                    <div className="d-flex justify-content-between pb-5">
+                    <div className="d-flex justify-content-between pb-4">
                         <h3 className="h3-responsive text-capitalize">{blog.blogCategory}</h3>
                         <h3 className="h5-responsive grey-text text-capitalize">
                             <Moment format="MMM DD, YYYY">
@@ -40,7 +40,7 @@ const BlogCards = () => {
                         </h3>
                     </div>
                 </div>
-                <Markdown className="h3-responsive">
+                <Markdown style={{ lineHeight: 1.4 }} className="h3-responsive">
                     {blog.content.markdown}
                 </Markdown>
             </MDBContainer>
