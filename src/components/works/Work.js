@@ -33,7 +33,7 @@ const Work = () => {
         <>
         {data.gcms.works.map(work => 
         <MDBCol className="mb-5" md="6" lg="6">
-            <MDBView waves zoom>
+            <MDBView zoom>
                 <ProgressiveImage className="w-100" src={work.previewImage.url} placeholder="work preview">
                     {src => <img className="w-100" src={src} alt="work preview alternative"/>}
                 </ProgressiveImage>
