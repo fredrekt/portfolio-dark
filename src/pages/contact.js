@@ -35,7 +35,7 @@ const toastSuccess = () => {
 }
 
 const ContactPage = () => {
-    const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor')
+    const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor') || 'light'
     const [theme, setTheme] = useState(initialColor);
     const [formData, setFormData] = useState({
         name: '',

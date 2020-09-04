@@ -33,7 +33,7 @@ const SubError = styled('p', {
 })
 
 const NotFoundPage = () => {
-  const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor')
+  const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor') || 'light'
   const [theme, setTheme] = useState(initialColor);
 
   useEffect(() => {

@@ -17,7 +17,7 @@ const THEME = {
 };
 
 const WorksPage = () => {
-    const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor')
+    const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor') || 'light'
     const [theme, setTheme] = useState(initialColor);
     const [hover, setHover] =useState(false)
 

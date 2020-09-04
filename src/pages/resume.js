@@ -22,7 +22,7 @@ const THEME = {
 };
 
 const ResumePage = () => {
-    const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor')
+    const initialColor = () => typeof window !== `undefined` && window.localStorage.getItem('themeColor') || 'light'
     const [theme, setTheme] = useState(initialColor);
    
     useEffect(() => {
