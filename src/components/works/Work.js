@@ -21,6 +21,11 @@ const Work = () => {
                     link
                     description
                     previewImage{
+                        previewImageWork {
+                            previewImage {
+                                url(transformation: {image: {resize: {height: 5, width: 5}}})
+                            }
+                        }
                         url
                     }
                 }
@@ -34,9 +39,11 @@ const Work = () => {
         {data.gcms.works.map(work => 
         <MDBCol className="mb-5" md="6" lg="6">
             <MDBView zoom>
-                <ProgressiveImage className="w-100" src={work.previewImage.url} placeholder="work preview">
-                    {src => <img className="w-100" src={src} alt="work preview alternative"/>}
+                {work.previewImage.previewImageWork.map(previewImage =>
+                    <ProgressiveImage className="w-100" src={work.previewImage.url} placeholder={previewImage.previewImage.url}>
+                    {(src, loading) => (<img style={{ filter: loading && `blur(5px)` }} className="w-100" src={src} alt="work preview alternative"/>)}
                 </ProgressiveImage>
+                )}
                 <MDBMask className="flex-center" overlay="black-strong">
                     <div className="content-container white-text p-5">
                         <h1 className="h1-responsive mb-lg-4 mb-md-4 mb-2">{work.project}</h1>
