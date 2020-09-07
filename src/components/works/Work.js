@@ -38,7 +38,7 @@ const Work = () => {
         <>
         {data.gcms.works.map(work => 
         <MDBCol className="mb-5" md="6" lg="6">
-            <MDBView zoom>
+            <MDBView zoom className="h-100">
                 {work.previewImage.previewImageWork.map(previewImage =>
                     <ProgressiveImage className="w-100" src={work.previewImage.url} placeholder={previewImage.previewImage.url}>
                     {(src, loading) => (<img style={{ filter: loading && `blur(5px)` }} className="w-100" src={src} alt="work preview alternative"/>)}
