@@ -66,6 +66,15 @@ module.exports = {
           },
         ],
       },
-    }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GATSBY_GA_ID,
+        // this option places the tracking script into the head of the DOM
+        head: true,
+        // other options
+      },
+    },
   ],
 }
