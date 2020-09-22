@@ -27,7 +27,7 @@ const BlogHeader = ({id, title, desc, date, theme}) => {
                 <p className="h2-responsive my-4">{desc}</p>
                 <div className="d-flex w-50 my-4 justify-content-between">
                     <FacebookProvider appId={process.env.GATSBY_FB_ID}>
-                        <Share href={`https://www.fredgaringo.ga/${id}`}>
+                        <Share href={`https://www.fredgaringo.ga/blog/${id}`}>
                         {({ handleClick, loading }) => (
                         <a disabled={loading} onClick={handleClick} className={theme === THEME.light ? "black-text" : "white-text"} type="button">
                             <MDBIcon size="lg" fab icon="facebook" />
