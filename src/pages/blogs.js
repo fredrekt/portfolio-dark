@@ -4,7 +4,6 @@ import SEO from '../components/seo';
 import Navbar from '../components/Navbar';
 import { MDBContainer, MDBRow } from 'mdbreact';
 import HeaderPage from '../components/HeaderPage';
-import BlogCards from '../components/blog/BlogCards';
 import BlogPreview from '../components/blog/BlogPreview';
 
 const THEME = {

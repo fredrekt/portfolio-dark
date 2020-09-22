@@ -1,7 +1,6 @@
 import React from 'react'
 import {styled} from 'baseui';
 import { MDBCol, MDBIcon } from 'mdbreact';
-import { Tag, VARIANT } from "baseui/tag";
 import Moment from 'react-moment';
 
 const Header = styled('h1', {
