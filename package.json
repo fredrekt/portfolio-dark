@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "portfolio-dark",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "My Digital Portfolio, Resume, Blog and my beloved works. ",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Fred Garingo <fredrickjohng7@gmail.com>",
   "dependencies": {
     "baseui": "^9.88.0",
     "emailjs-com": "^2.6.3",
