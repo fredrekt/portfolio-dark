@@ -12,20 +12,25 @@ const Header = styled('h1', {
     }
 })
 
-const BlogHeader = ({title, desc, date}) => {
+const THEME = {
+    light: 'light',
+    dark: 'dark',
+};
+
+const BlogHeader = ({title, desc, date, theme}) => {
     return (
         <>
             <MDBCol lg="4" md="4">
                 <Header className="mb-4">{title}</Header>
                 <p className="h2-responsive my-4">{desc}</p>
                 <div className="d-flex w-50 my-4 justify-content-between">
-                    <a className="black-text" href="#">
+                    <a className={theme === THEME.light ? "black-text" : "white-text"} href="#">
                         <MDBIcon size="lg" fab icon="facebook" />
                     </a>
-                    <a className="black-text" href="#">
+                    <a className={theme === THEME.light ? "black-text" : "white-text"} href="#">
                         <MDBIcon size="lg" fab icon="twitter" />
                     </a>
-                    <a className="black-text" href="#">
+                    <a className={theme === THEME.light ? "black-text" : "white-text"} href="#">
                         <MDBIcon size="lg" fab icon="linkedin-in" />
                     </a>
                 </div>
