@@ -13,7 +13,7 @@ const Header = styled('h1', {
     }
 })
 
-const BlogHeader = ({title, desc, category, date}) => {
+const BlogHeader = ({title, desc, date}) => {
     return (
         <>
             <MDBCol lg="4" md="4">
