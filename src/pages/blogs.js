@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import { MDBContainer, MDBRow } from 'mdbreact';
 import HeaderPage from '../components/HeaderPage';
 import BlogCards from '../components/blog/BlogCards';
+import BlogPreview from '../components/blog/BlogPreview';
 
 const THEME = {
     light: 'light',
@@ -31,7 +32,8 @@ const BlogPage = () => {
             </MDBContainer>
             <MDBContainer fluid className="px-4">
                 <MDBRow className="pb-5">
-                    <BlogCards/>
+                    {/* <BlogCards/> */}
+                    <BlogPreview theme={theme}/>
                 </MDBRow>
             </MDBContainer>
         </div>

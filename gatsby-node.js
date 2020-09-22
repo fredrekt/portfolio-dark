@@ -4,7 +4,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     const {data: {gcms: {blogs}}} = await graphql(`
         {
             gcms{
-                blogs{
+                blogs(where: { blogCategory_not: movies }){
                     id
                     title
                 }
