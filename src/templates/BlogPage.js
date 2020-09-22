@@ -28,7 +28,7 @@ const BlogPage = ({data: {gcms: {blog}}}) => {
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
           } color={theme}/>
           <MDBContainer fluid className="px-4">
-            <MDBRow className="my-5">
+            <MDBRow className="py-5">
                 <BlogHeader id={blog.id} theme={theme} title={blog.title} date={blog.createdAt} desc={blog.description}/>
                 <BlogBody content={blog.content.markdown}/>
             </MDBRow>
