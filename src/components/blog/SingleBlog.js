@@ -51,7 +51,7 @@ const SingleBlog = ({id}) => {
           } color={theme}/>
           <MDBContainer fluid className="px-4 pb-5">
               <div className="header-container py-4">
-                <h1 className="display-1">{blog.title}</h1>
+                <h1 className="display-1">{id}</h1>
                 <MDBRow>
                     <MDBCol md="5" lg="5">
                         <h1 className="h1-responsive text-capitalize">{blog.blogCategory}</h1>
