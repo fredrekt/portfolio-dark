@@ -20,6 +20,11 @@ const BlogPreview = ({theme}) => {
                    blogCategory
                    preview{
                        url
+                       previewBlog {
+                        preview {
+                          url(transformation: {image: {resize: {height: 5, width: 5}}})
+                        }
+                      }
                    } 
                 }
             }
@@ -32,9 +37,10 @@ const BlogPreview = ({theme}) => {
         <>
         <MDBCol className="my-4" md="3" lg="3">
             <Link to={`/blog/${blog.id}`}>
-                <ProgressiveImage src={blog.preview.url} placeholder="loading image here">
+                {blog.preview.previewBlog.map(i => 
+                <ProgressiveImage src={blog.preview.url} placeholder={i.preview.url}>
                     {(src, loading) => ( <img src={src} style={{ filter: loading && `blur(5px)` }} alt="blog preview" className="w-100"/> )}
-                </ProgressiveImage>
+                </ProgressiveImage>)}
                 <div className={`blog-content-preview my-4 ${theme === THEME.light ? "black-text" : "white-text"}`}>
                     <h3 className="h3-responsive">{blog.title}</h3>
                     <p className="lead">{blog.description}</p>
