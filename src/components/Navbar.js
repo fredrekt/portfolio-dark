@@ -4,20 +4,41 @@ import { Link } from 'gatsby';
 import { Button, KIND } from "baseui/button";
 import './hover.css'
 import HamburgerMenu from 'react-hamburger-menu'
-
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  ModalButton,
+  SIZE,
+  ROLE
+} from "baseui/modal";
+import { KIND as ButtonKind } from "baseui/button";
+import { StyledLink } from 'baseui/link'
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       collapse: false,
+      modal: typeof window !== `undefined` && window.localStorage.getItem('consent') === null && true
     };
     this.onClick = this.onClick.bind(this);
+  }
+
+  componentDidMount(){
+    typeof window !== `undefined` && window.localStorage.setItem('consent', this.state.modal)
   }
 
   onClick() {
     this.setState({
       collapse: !this.state.collapse,
     });
+  }
+
+  closeModal = () => {
+    this.setState({
+      modal: false
+    })
   }
 
   render() {
@@ -43,7 +64,7 @@ class Navbar extends React.Component {
     }
 
     return (
-      <div>
+      <>
         <header>
               <MDBNavbar className="z-depth-0 py-5" scrolling color="light" light dark expand="md">
                 <MDBContainer fluid>
@@ -123,7 +144,29 @@ class Navbar extends React.Component {
                 </MDBContainer>
               </MDBNavbar>
         </header>
-      </div>
+
+        <Modal
+          onClose={this.closeModal}
+          closeable
+          isOpen={this.state.modal}
+          animate
+          autoFocus
+          size={SIZE.default}
+          role={ROLE.dialog}
+        >
+          <ModalHeader>Cookies Policy</ModalHeader>
+          <ModalBody>
+            This website uses cookies to improve your website experience.&nbsp;
+            <StyledLink href="/policy">Learn more here.</StyledLink>
+          </ModalBody>
+          <ModalFooter>
+            <ModalButton onClick={this.closeModal} kind={ButtonKind.tertiary}>
+              Cancel
+            </ModalButton>
+            <ModalButton onClick={this.closeModal}>Okay</ModalButton>
+          </ModalFooter>
+        </Modal>
+      </>
     );
   }
 }
