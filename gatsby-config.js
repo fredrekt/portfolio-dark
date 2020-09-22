@@ -45,7 +45,7 @@ module.exports = {
           fieldName: "gcms",
           // Your API endpoint, available from the dashboard and settings window.
           // You can use this endpoint that features US mountains for now.
-          url: "https://api-ap-northeast-1.graphcms.com/v2/ckddnxngeiqt401xs38fje4s8/master",
+          url: process.env.GATSBY_GRAPHQL_URI,
       },
     },
     {
