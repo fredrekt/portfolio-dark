@@ -22,7 +22,7 @@ const BlogPage = ({data: {gcms: {blog}}}) => {
 
     return (
         <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
-        <SEO title={blog.title} description={blog.description}/>
+        <SEO title={blog.title} description={blog.description} image={blog.preview.url}/>
         <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
