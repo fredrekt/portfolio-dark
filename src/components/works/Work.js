@@ -16,7 +16,7 @@ const Work = () => {
     const data = useStaticQuery(graphql`
         query{
             gcms{
-                works{
+                works(orderBy: createdAt_DESC){
                     project
                     link
                     description
