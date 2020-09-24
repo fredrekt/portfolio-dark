@@ -20,34 +20,37 @@ h1, h2, h3, h4, h5, h6{
   display: none;
 }
 span > a {
-    position: relative;
-    color: #000;
-    text-decoration: none;
-  }
-  
-  span > a:hover {
-    color: #000;
-  }
-  span > a::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: -3px;
-    left: 0;
-    background-color: #000;
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: all 0.3s ease-in-out 0s;
-  }
-  span > a:hover::before {
-    visibility: visible;
-    transform: scaleX(1);
-  }
-  .content-container-link {
-    font-size: 1.2rem!important;
-    font-family: 'Biryani', sans-serif!important;
-  }
+  position: relative;
+  color: #000;
+  text-decoration: none;
+}
+
+span > a:hover {
+  color: #000;
+}
+span > a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background-color: #000;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
+}
+span > a:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+.content-container-link {
+  font-size: 1.2rem!important;
+  font-family: 'Biryani', sans-serif!important;
+}
+.collapse-menu-responsive{
+  align-items: center!important;
+}
   /* // Extra small devices (portrait phones, less than 576px)
   // No media query for `xs` since this is the default in Bootstrap */
 
@@ -65,11 +68,14 @@ span > a {
     .content-container-link {
       font-size: .8rem!important;
     }
+    .collapse-menu-responsive{
+      align-items: flex-end!important;
+    }
   }
 
   /* // Medium devices (tablets, 768px and up) */
   @media screen and (min-width: 768px) { 
-
+    
   }
 
   /* // Large devices (desktops, 992px and up) */

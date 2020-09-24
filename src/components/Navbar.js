@@ -73,7 +73,6 @@ class Navbar extends React.Component {
                       Spicy Developer
                     </strong>
                   </Link>
-                  {/* <MDBNavbarToggler onClick={this.onClick} /> */}
                   <HamburgerMenu
                       className="d-lg-none d-md-none d-inline mx-2"
                       isOpen={this.state.collapse}
@@ -87,44 +86,44 @@ class Navbar extends React.Component {
                       animationDuration={0.5}
                   />     
                   <MDBCollapse isOpen={this.state.collapse} navbar>
-                    <MDBNavbarNav className="align-items-center" right>
+                    <MDBNavbarNav className="collapse-menu-responsive" right>
                       <MDBNavItem>
                         <span>
-                          <Link activeStyle={active} style={styleColor} className="mx-4" to="/about">
+                          <Link activeStyle={active} style={styleColor} className="mx-lg-4 mx-md-4" to="/about">
                             About
                           </Link>
                         </span>
                       </MDBNavItem>
                       <MDBNavItem>
                         <span>
-                          <Link activeStyle={active} style={styleColor} className="mx-4"to="/works">
+                          <Link activeStyle={active} style={styleColor} className="mx-lg-4 mx-md-4"to="/works">
                             Work
                           </Link>
                         </span>
                       </MDBNavItem>
                       <MDBNavItem>
                         <span>
-                          <Link activeStyle={active} style={styleColor} className="mx-4"to="/resume">
+                          <Link activeStyle={active} style={styleColor} className="mx-lg-4 mx-md-4"to="/resume">
                             Resume
                           </Link>
                         </span>
                       </MDBNavItem>
                       <MDBNavItem>
                         <span>
-                          <Link activeStyle={active} style={styleColor} className="mx-4"to="/blogs">
+                          <Link activeStyle={active} style={styleColor} className="mx-lg-4 mx-md-4"to="/blogs">
                             Blog
                           </Link>
                         </span>
                       </MDBNavItem>
                       <MDBNavItem>
                         <span>
-                          <Link activeStyle={active} style={styleColor} className="mx-4"to="/contact">
+                          <Link activeStyle={active} style={styleColor} className="mx-lg-4 mx-md-4"to="/contact">
                             Contact
                           </Link>
                         </span>
                       </MDBNavItem>
                       <MDBNavItem>
-                        <Button style={styleColor} className="px-4" kind={KIND.minimal} onClick={this.props.onClick}>
+                        <Button style={styleColor} className="px-4 d-none d-lg-inline-block d-md-inline-block" kind={KIND.minimal} onClick={this.props.onClick}>
                           {theme === 'light' ? 
                           (
                             <>
@@ -138,6 +137,20 @@ class Navbar extends React.Component {
                             </>
                           )}
                         </Button>
+                        <a style={styleColor} onClick={this.props.onClick} className="d-inline-block d-lg-none d-md-none">
+                          {theme === 'light' ? 
+                          (
+                            <>
+                              Dark Mode
+                            </>
+                          )
+                          : 
+                          (
+                            <>
+                              Light Mode
+                            </>
+                          )}
+                        </a>
                       </MDBNavItem>
                     </MDBNavbarNav>
                   </MDBCollapse>
