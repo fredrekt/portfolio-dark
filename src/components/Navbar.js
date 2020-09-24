@@ -75,7 +75,7 @@ class Navbar extends React.Component {
                   </Link>
                   {/* <MDBNavbarToggler onClick={this.onClick} /> */}
                   <HamburgerMenu
-                      className="responsive-mobile mx-2"
+                      className="d-lg-none d-md-none d-inline mx-2"
                       isOpen={this.state.collapse}
                       menuClicked={this.onClick}
                       width={24}
