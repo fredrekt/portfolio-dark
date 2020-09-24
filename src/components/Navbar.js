@@ -86,69 +86,55 @@ class Navbar extends React.Component {
                       animationDuration={0.5}
                   />     
                   <MDBCollapse isOpen={this.state.collapse} navbar>
-                    <MDBNavbarNav className="collapse-menu-responsive" right>
-                      <MDBNavItem>
+                    <MDBNavbarNav right>
+                      <MDBNavItem className="align-self-end align-self-lg-center align-self-md-center">
                         <span>
                           <Link activeStyle={active} style={styleColor} className="mx-lg-4 mx-md-4" to="/about">
                             About
                           </Link>
                         </span>
                       </MDBNavItem>
-                      <MDBNavItem>
+                      <MDBNavItem className="align-self-end align-self-lg-center align-self-md-center">
                         <span>
-                          <Link activeStyle={active} style={styleColor} className="mx-lg-4 mx-md-4"to="/works">
+                          <Link activeStyle={active} style={styleColor} className="mx-lg-4 mx-md-4" to="/works">
                             Work
                           </Link>
                         </span>
                       </MDBNavItem>
-                      <MDBNavItem>
+                      <MDBNavItem className="align-self-end align-self-lg-center align-self-md-center">
                         <span>
-                          <Link activeStyle={active} style={styleColor} className="mx-lg-4 mx-md-4"to="/resume">
+                          <Link activeStyle={active} style={styleColor} className="mx-lg-4 mx-md-4" to="/resume">
                             Resume
                           </Link>
                         </span>
                       </MDBNavItem>
-                      <MDBNavItem>
+                      <MDBNavItem className="align-self-end align-self-lg-center align-self-md-center">
                         <span>
-                          <Link activeStyle={active} style={styleColor} className="mx-lg-4 mx-md-4"to="/blogs">
+                          <Link activeStyle={active} style={styleColor} className="mx-lg-4 mx-md-4" to="/blogs">
                             Blog
                           </Link>
                         </span>
                       </MDBNavItem>
-                      <MDBNavItem>
+                      <MDBNavItem className="align-self-end align-self-lg-center align-self-md-center">
                         <span>
-                          <Link activeStyle={active} style={styleColor} className="mx-lg-4 mx-md-4"to="/contact">
+                          <Link activeStyle={active} style={styleColor} className="mx-lg-4 mx-md-4" to="/contact">
                             Contact
                           </Link>
                         </span>
                       </MDBNavItem>
-                      <MDBNavItem>
-                        <Button style={styleColor} className="px-4 d-none d-lg-inline-block d-md-inline-block" kind={KIND.minimal} onClick={this.props.onClick}>
+                      <MDBNavItem className="align-self-end align-self-lg-center align-self-md-center">
+                        <a className="mx-lg-4 mx-md-4" style={styleColor} onClick={this.props.onClick}>
                           {theme === 'light' ? 
                           (
                             <>
-                              Dark Mode <MDBIcon icon="moon mx-2"/>
+                              Dark Mode <MDBIcon className="float-md-right float-lg-right float-left my-1 mx-lg-0 mx-md-0 mx-2" icon="moon"/>
                             </>
                           )
                           : 
                           (
-                            <>
-                              Light Mode <MDBIcon far icon="moon mx-2"/>
-                            </>
-                          )}
-                        </Button>
-                        <a style={styleColor} onClick={this.props.onClick} className="d-inline-block d-lg-none d-md-none">
-                          {theme === 'light' ? 
-                          (
-                            <>
-                              Dark Mode
-                            </>
-                          )
-                          : 
-                          (
-                            <>
-                              Light Mode
-                            </>
+                            <span>
+                              Light Mode <MDBIcon className="float-md-right float-lg-right float-left my-1 mx-lg-0 mx-md-0 mx-2" far icon="moon"/>
+                            </span>
                           )}
                         </a>
                       </MDBNavItem>
