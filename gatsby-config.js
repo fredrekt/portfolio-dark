@@ -50,25 +50,25 @@ module.exports = {
           url: process.env.GATSBY_GRAPHQL_URI,
       },
     },
-    {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-  	  options: {
-        fonts: [
-          {
-            family: `Lato`,
-            variants: [`900`]
-          },
-          {
-            family: `Playball`,
-            variants: [`400`]
-          },
-          {
-          	family: `Biryani`,
-          	variants: [`400`, `600`, `700`, `800`, `900`]
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
+  	//   options: {
+    //     fonts: [
+    //       {
+    //         family: `Lato`,
+    //         variants: [`900`]
+    //       },
+    //       {
+    //         family: `Playball`,
+    //         variants: [`400`]
+    //       },
+    //       {
+    //       	family: `Biryani`,
+    //       	variants: [`400`, `600`, `700`, `800`, `900`]
+    //       },
+    //     ],
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
