@@ -59,5 +59,8 @@
   },
   "bugs": {
     "url": "https://github.com/fredrekt/portfolio-dark/issues"
+  },
+  "engines": {
+    "node": ">=14.14"
   }
 }
