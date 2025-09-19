@@ -40,19 +40,19 @@ module.exports = {
     },
     {
       resolve: "gatsby-source-graphql",
-          options: {
-          // The top level query type, can be anything you want!
-          typeName: "GCMS",
-          // The field you'll query against, can also be anything you want.
-          fieldName: "gcms",
-          // Your API endpoint, available from the dashboard and settings window.
-          // You can use this endpoint that features US mountains for now.
-          url: process.env.GATSBY_GRAPHQL_URI,
+      options: {
+        // The top level query type, can be anything you want!
+        typeName: "GCMS",
+        // The field you'll query against, can also be anything you want.
+        fieldName: "gcms",
+        // Your API endpoint, available from the dashboard and settings window.
+        // You can use this endpoint that features US mountains for now.
+        url: process.env.GATSBY_GRAPHQL_URI,
       },
     },
     // {
     //   resolve: `gatsby-plugin-prefetch-google-fonts`,
-  	//   options: {
+    //   options: {
     //     fonts: [
     //       {
     //         family: `Lato`,
@@ -78,11 +78,19 @@ module.exports = {
         // other options
       },
     },
-    {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        precachePages: [`/about/`, `/works/`, `/policy/`, `/contact/`, `/resume/`, `/blogs/`, '/blog/*'],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-offline`,
+    //   options: {
+    //     precachePages: [
+    //       `/about/`,
+    //       `/works/`,
+    //       `/policy/`,
+    //       `/contact/`,
+    //       `/resume/`,
+    //       `/blogs/`,
+    //       "/blog/*",
+    //     ],
+    //   },
+    // },
   ],
 }
