@@ -25,8 +25,22 @@ class Navbar extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
+  applyPageBackground() {
+    if (typeof document === "undefined") return
+    const bg = this.props.color === "dark" ? "#000" : "#fff"
+    document.documentElement.style.background = bg
+    document.body.style.background = bg
+  }
+
   componentDidMount(){
     typeof window !== `undefined` && window.localStorage.setItem('consent', this.state.modal)
+    this.applyPageBackground()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.color !== this.props.color) {
+      this.applyPageBackground()
+    }
   }
 
   onClick() {

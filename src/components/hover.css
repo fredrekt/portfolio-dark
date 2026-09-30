@@ -7,6 +7,20 @@ body{
   margin: 0;
   padding: 0;
 }
+.wrapper{
+  min-height: 100vh;
+}
+.resume-page.container{
+  max-width: 1320px;
+}
+.resume-content{
+  overflow-wrap: break-word;
+}
+.resume-page [data-baseweb="accordion"] [role="button"]{
+  background-color: transparent !important;
+  color: inherit !important;
+  border: 1px solid currentColor;
+}
 h1, h2, h3, h4, h5, h6{
   font-family: 'Lato', sans-serif!important;
 }
