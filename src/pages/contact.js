@@ -5,7 +5,7 @@ import SEO from '../components/seo'
 import { ThemeProvider, DarkTheme, LightTheme } from 'baseui';
 import Navbar from '../components/Navbar';
 import { Input, SIZE } from "baseui/input";
-import { Textarea } from "baseui/textarea";
+import { styled } from "baseui";
 import ArrowRight from 'baseui/icon/arrow-right';
 import {Button} from 'baseui/button';
 import emailjs from 'emailjs-com';
@@ -18,6 +18,24 @@ const THEME = {
     light: 'light',
     dark: 'dark',
 };
+
+const MessageField = styled('textarea', ({ $theme }) => ({
+    width: '100%',
+    minHeight: '160px',
+    padding: '14px 16px',
+    fontSize: '16px',
+    lineHeight: 1.5,
+    border: `2px solid ${$theme.colors.inputBorder}`,
+    borderRadius: $theme.borders.inputBorderRadius,
+    backgroundColor: $theme.colors.inputFill,
+    color: $theme.colors.inputText,
+    fontFamily: 'inherit',
+    resize: 'vertical',
+    ':focus': {
+        outline: 'none',
+        borderColor: $theme.colors.inputBorderFocus,
+    },
+}));
 
 const toastSuccess = () => {
     toast.dark(`Message Sent!`, {
@@ -89,7 +107,6 @@ const ContactPage = () => {
 
     return (
         <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
-        <SEO title="Contact" description="Got a project in mind? Feel free to reach out to me. I would love to help you with that. First let's talk about what you have in mind."/>
         <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
@@ -139,16 +156,12 @@ const ContactPage = () => {
                             />
                         </div>
                         <div className="my-4">
-                            <Textarea
+                            <MessageField
                                 name="message"
                                 value={message}
                                 onChange={e=>onChange(e)}
-                                size={SIZE.large}
                                 placeholder="Your Message"
                                 required
-                                clearable
-                                clearOnEscape
-                                type="text"
                             />
                         </div>
                         <div className="my-4">
@@ -176,5 +189,9 @@ const ContactPage = () => {
         </ThemeProvider>
     )
 }
+
+export const Head = () => (
+    <SEO title="Contact" description="Got a project in mind? Feel free to reach out to me. I would love to help you with that. First let's talk about what you have in mind." />
+)
 
 export default ContactPage

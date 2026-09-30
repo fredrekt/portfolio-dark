@@ -21,7 +21,6 @@ const BlogPage = () => {
 
     return (
         <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
-        <SEO title="Blog" description="Read blogs about technology, development, PWA."/>
         <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
@@ -39,5 +38,9 @@ const BlogPage = () => {
         </ThemeProvider>
     )
 }
+
+export const Head = () => (
+    <SEO title="Blog" description="Read blogs about technology, development, PWA." />
+)
 
 export default BlogPage

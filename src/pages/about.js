@@ -63,7 +63,6 @@ const AboutPage = () => {
 
     return (
         <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
-        <SEO title="About" description="Me, Myself & I. What you need to know about me. Find out where i am and what i do."/>
         <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
@@ -118,7 +117,7 @@ const AboutPage = () => {
                         <div className="my-5">
                             <iframe
                             title="developer's location" 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15703.872331734146!2d123.81861022739237!3d10.264155282724873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99d08fc35c237%3A0x9841502ea3d82016!2sLawaan%20III%2C%20Talisay%2C%20Cebu!5e0!3m2!1sen!2sph!4v1595642283821!5m2!1sen!2sph" width="100%" height="400" frameborder="0" style={{"border":0}} allowfullscreen="" aria-hidden="false"></iframe>
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15703.872331734146!2d123.81861022739237!3d10.264155282724873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99d08fc35c237%3A0x9841502ea3d82016!2sLawaan%20III%2C%20Talisay%2C%20Cebu!5e0!3m2!1sen!2sph!4v1595642283821!5m2!1sen!2sph" width="100%" height="400" frameBorder="0" style={{"border":0}} allowFullScreen="" aria-hidden="false"></iframe>
                         </div>
                         <LocationContainer>
                             <AboutHeader>
@@ -132,5 +131,9 @@ const AboutPage = () => {
         </ThemeProvider>
     )
 }
+
+export const Head = () => (
+    <SEO title="About" description="Me, Myself & I. What you need to know about me. Find out where i am and what i do." />
+)
 
 export default AboutPage

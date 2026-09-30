@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react"
 import SEO from "../components/seo"
 import {LightTheme, ThemeProvider, DarkTheme} from 'baseui';
-import '@fortawesome/fontawesome-free/css/all.min.css'; 
-import 'bootstrap-css-only/css/bootstrap.min.css'; 
-import 'mdbreact/dist/css/mdb.css';
 import {styled} from 'baseui';
 import Navbar from "../components/Navbar";
 
@@ -44,7 +41,6 @@ const IndexPage = () => {
     
   return(
     <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
-    <SEO title="Home" />  
       <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
@@ -58,5 +54,7 @@ const IndexPage = () => {
     </ThemeProvider>
   )
 }
+
+export const Head = () => <SEO title="Home" />
 
 export default IndexPage

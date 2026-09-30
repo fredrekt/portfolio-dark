@@ -1,22 +1,29 @@
-const path = require('path');
-
-exports.createPages = async ({ graphql, actions: { createPage } }) => {
-    const {data: {gcms: {blogs}}} = await graphql(`
-        {
-            gcms{
-                blogs(where: { blogCategory_not: movies }){
-                    id
-                    title
-                }
-            }
+exports.createPages = async ({ graphql, actions: { createPage }, reporter }) => {
+  const result = await graphql(`
+    {
+      gcms {
+        blogs(where: { blogCategory_not: movies }) {
+          id
+          title
         }
-    `)
+      }
+    }
+  `)
 
-    blogs.forEach(({id, title}) => createPage({
-        path: `/blog/${id}`,
-        component: require.resolve(`./src/templates/BlogPage.js`),
-        context: {
-            id
-        }
-    }))
+  if (result.errors) {
+    reporter.panicOnBuild(`Failed to query GraphCMS blogs.`, result.errors)
+    return
+  }
+
+  const blogs = result.data?.gcms?.blogs ?? []
+
+  blogs.forEach(({ id }) =>
+    createPage({
+      path: `/blog/${id}`,
+      component: require.resolve(`./src/templates/BlogPage.js`),
+      context: {
+        id,
+      },
+    })
+  )
 }

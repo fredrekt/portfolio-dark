@@ -35,7 +35,6 @@ const ResumePage = () => {
 
     return (
         <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
-        <SEO title="Resume" description="What you need to know about my experiences, skills, and many other. What stack i have or technologies i use. Find out more here."/>
         <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
@@ -149,5 +148,9 @@ const ResumePage = () => {
         </ThemeProvider>
     )
 }
+
+export const Head = () => (
+    <SEO title="Resume" description="What you need to know about my experiences, skills, and many other. What stack i have or technologies i use. Find out more here." />
+)
 
 export default ResumePage

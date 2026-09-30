@@ -20,7 +20,6 @@ const PolicyPage = () => {
 
     return (
         <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
-        <SEO title="Policy" description="Terms & Conditions, Privacy Policy, Cookies Policy, all that legal stuff."/>
         <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
@@ -121,5 +120,9 @@ const PolicyPage = () => {
         </ThemeProvider>
     )
 }
+
+export const Head = () => (
+    <SEO title="Policy" description="Terms & Conditions, Privacy Policy, Cookies Policy, all that legal stuff." />
+)
 
 export default PolicyPage
