@@ -55,7 +55,7 @@ const ResumePage = () => {
           }
           color={theme}
         />
-        <MDBContainer className="resume-page px-4 pb-5">
+        <MDBContainer fluid className="resume-page px-4 pb-5">
           <HeaderPage text="My Resume" />
           <MDBRow className="pb-5">
             <MDBCol md="4" lg="4">
