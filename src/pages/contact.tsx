@@ -185,7 +185,7 @@ const ContactPage = () => {
                                 </MDBAnimation>
                             </span>
                             <ReCAPTCHA
-                                sitekey="6LcOeLgZAAAAANHETknJoMT5qLG7Nl7h0X_leF7K"
+                                sitekey={process.env.GATSBY_RECAPTCHA_SITEKEY || ''}
                                 onChange={(value)=>setCaptcha(value)}
                             />
                         </div>
