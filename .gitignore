@@ -54,6 +54,9 @@ typings/
 # dotenv environment variable files
 .env*
 
+# Local MCP config (contains the Hygraph token)
+.cursor/mcp.json
+
 # gatsby files
 .cache/
 public
