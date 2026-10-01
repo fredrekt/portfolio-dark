@@ -2,6 +2,7 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { MDBCol } from "mdbreact"
 import Moment from "react-moment"
+import { HeadingMedium, HeadingSmall, HeadingXSmall } from "baseui/typography"
 import type { CertificatesQuery } from "../../types/cms"
 import type { Theme } from "../../types/theme"
 
@@ -35,11 +36,11 @@ const Certificates = ({ theme }: CertificatesProps) => {
             <MDBCol key={certificate.id} className="my-4" md="12" lg="12">
               <div style={color} className="resume-container">
                 <div style={{ marginLeft: `1rem` }} className="resume-content">
-                  <h2>
+                  <HeadingMedium as="h3" marginTop="0" marginBottom="scale200">
                     <Moment format="YYYY">{certificate.date}</Moment>
-                  </h2>
-                  <h4>{certificate.company}</h4>
-                  <h5>{certificate.title}</h5>
+                  </HeadingMedium>
+                  <HeadingSmall as="h4" marginTop="0" marginBottom="scale100">{certificate.company}</HeadingSmall>
+                  <HeadingXSmall as="h5" marginTop="0" marginBottom="scale300">{certificate.title}</HeadingXSmall>
                   <ul className="list-unstyled skills-list">
                     {certificate.description.map(desc => (
                       <li>{desc}</li>

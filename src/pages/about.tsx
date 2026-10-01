@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react'
+import { type HeadProps } from 'gatsby'
 import SEO from '../components/seo'
 import HeaderPage from '../components/HeaderPage';
 import { MDBContainer, MDBRow, MDBCol } from 'mdbreact'
-import { ThemeProvider, DarkTheme, LightTheme } from 'baseui';
+import { ThemeProvider, styled } from 'baseui';
+import { HeadingXLarge, ParagraphLarge } from 'baseui/typography';
 import Navbar from '../components/Navbar';
 import { Parallax } from 'react-parallax';
-import {styled} from 'baseui';
 import { THEME, getStoredTheme, type Theme } from '../types/theme';
+import { siteTheme, statementFont } from '../theme/site';
+
+const TextLink = styled('a', {
+    color: 'inherit',
+    textDecoration: 'underline',
+    textUnderlinePosition: 'under',
+})
 
 const AboutPage = () => {
     const [theme, setTheme] = useState<Theme>(getStoredTheme)
@@ -14,36 +22,6 @@ const AboutPage = () => {
     useEffect(() => {
         typeof window !== `undefined` && window.localStorage.setItem('themeColor', theme)
     },[theme])
-
-    const AboutHeader = styled('h1', {
-        fontSize: `3.25rem`,
-        lineHeight: `1.4`,
-        "@media screen and (max-width: 540px)": {
-            fontSize: `2.25rem`
-        }
-    })
-
-    const AboutContent = styled('p', {
-        fontSize: `1.3rem`,
-        fontFamily: `'Biryani', sans-serif`,
-        "@media screen and (max-width: 540px)": {
-            fontSize: `1rem`
-        }
-    })
-
-    const AboutStyledLink = styled('a', {
-        fontSize: `1.3rem`,
-        fontFamily: `'Biryani', sans-serif`,
-        color: `${theme === 'light' ? "#000" : "#fff"}`,
-        textDecoration: `underline`,
-        textUnderlinePosition: `under`,
-        ":hover":{
-            color: `${theme === 'light' ? "#000" : "#fff"}`
-        },
-        "@media screen and (max-width: 540px)": {
-            fontSize: `1rem`
-        }
-    })
 
     const LocationContainer = styled('div', {
         width: `50%`,
@@ -57,13 +35,13 @@ const AboutPage = () => {
     })
 
     return (
-        <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
+        <ThemeProvider theme={siteTheme(theme)}>
         <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
             } color={theme}/>
             <MDBContainer fluid className="px-4 pb-5">
-                <HeaderPage text="Me, Myself & I"/>
+                <HeaderPage text="About"/>
                 <MDBRow className="pb-5 pb-lg-0 pb-md-0">
                     <MDBCol>
                         <Parallax
@@ -75,23 +53,18 @@ const AboutPage = () => {
                 </MDBRow>
                 <MDBRow className="my-lg-5 my-0 py-lg-5 py-0">
                     <MDBCol md="6">
-                        <AboutHeader>
-                            I am a Full Stack Developer, love JavaScript 
-                            and also play first person shooter games.
-                        </AboutHeader>
+                        <HeadingXLarge font={statementFont} marginTop="0" marginBottom="0">
+                            I build production-ready products end to end.
+                        </HeadingXLarge>
                     </MDBCol>
                     <MDBCol md="6">
                         <div className="mt-2">
-                            <AboutContent className="lead">
-                            Mainly i love react. Would love to learn more about JavaScript. 
-                            Absolute would love to discover new technologies and build things 
-                            on my own. That's how i learn. Love to playing Apex Legends.
-                            Listening to music while i work equals productivity for me. 
-                            </AboutContent>
-                            <AboutContent className="lead">
-                            If you have a project or an idea in mind, don't be shy and send me  
-                            a <AboutStyledLink href="/contact">message here</AboutStyledLink>, from there let’s see where it takes us.
-                            </AboutContent>
+                            <ParagraphLarge marginTop="0">
+                            Eight years across web and mobile, from the interface through APIs, data, and release. Recent work includes production AI: retrieval, transcript analysis, and product workflows, next to the ordinary work of shipping a feature that holds up.
+                            </ParagraphLarge>
+                            <ParagraphLarge marginTop="0">
+                            The usual stack is React, Next.js, and TypeScript, with Django or Node behind it. If you have a product to build, send a <TextLink href="/contact/">message</TextLink>.
+                            </ParagraphLarge>
                         </div>
                     </MDBCol>
                 </MDBRow>
@@ -115,9 +88,9 @@ const AboutPage = () => {
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15703.872331734146!2d123.81861022739237!3d10.264155282724873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99d08fc35c237%3A0x9841502ea3d82016!2sLawaan%20III%2C%20Talisay%2C%20Cebu!5e0!3m2!1sen!2sph!4v1595642283821!5m2!1sen!2sph" width="100%" height="400" frameBorder="0" style={{"border":0}} allowFullScreen aria-hidden="false"></iframe>
                         </div>
                         <LocationContainer>
-                            <AboutHeader>
+                            <HeadingXLarge font={statementFont} marginTop="0" marginBottom="0">
                                 Lawaan III - Talisay City, Central Visayas, Philippines
-                            </AboutHeader>
+                            </HeadingXLarge>
                         </LocationContainer>
                     </MDBCol>
                 </MDBRow>
@@ -127,8 +100,12 @@ const AboutPage = () => {
     )
 }
 
-export const Head = () => (
-    <SEO title="About" description="Me, Myself & I. What you need to know about me. Find out where i am and what i do." />
+export const Head = ({ location }: HeadProps) => (
+    <SEO
+        title="About"
+        description="Senior full stack developer in Cebu. Fred Garingo ships web and mobile products end to end, including production AI, React, Next.js, and backend services."
+        pathname={location.pathname}
+    />
 )
 
 export default AboutPage

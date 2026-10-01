@@ -1,4 +1,5 @@
 import { StyledLink } from "baseui/link"
+import { HeadingLarge, ParagraphMedium } from "baseui/typography"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { MDBCol } from "mdbreact"
 import React from "react"
@@ -65,8 +66,8 @@ const BlogPreview = ({ theme }: BlogPreviewProps) => {
               theme === THEME.light ? "black-text" : "white-text"
             }`}
           >
-            <h3 className="h3-responsive">{blog.title}</h3>
-            <p className="lead">{blog.description}</p>
+            <HeadingLarge as="h2" marginTop="scale600" marginBottom="scale300">{blog.title}</HeadingLarge>
+            <ParagraphMedium marginTop="0">{blog.description}</ParagraphMedium>
             <StyledLink animateUnderline href={`/blog/${blog.id}`}>
               Read Blog
             </StyledLink>

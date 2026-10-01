@@ -76,7 +76,7 @@ class Navbar extends React.Component<NavbarProps, NavbarState> {
       fontWeight: `700`,
       fontSize: `1rem`,
       textTransform: `uppercase`,
-      fontFamily:`'Lato', sans-serif!important`,
+      fontFamily: `Lato, sans-serif`,
       letterSpacing: `0.3em`
     }
 

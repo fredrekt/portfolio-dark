@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react"
+import { type HeadProps } from "gatsby"
 import SEO from "../components/seo"
 import Navbar from "../components/Navbar"
 import HeaderPage from "../components/HeaderPage"
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact"
-import { ThemeProvider, DarkTheme, LightTheme } from "baseui"
+import { ThemeProvider } from "baseui"
+import { HeadingLarge, HeadingSmall } from "baseui/typography"
 import { Accordion, Panel } from "baseui/accordion"
 import Frontend from "../components/skills/Frontend"
 import Backend from "../components/skills/Backend"
@@ -16,6 +18,7 @@ import RightMisc from "../components/skills/RightMisc"
 import Experience from "../components/experiences/Experience"
 import Certificates from "../components/experiences/Certificates"
 import { THEME, getStoredTheme, type Theme } from "../types/theme"
+import { siteTheme } from "../theme/site"
 
 const ResumePage = () => {
   const [theme, setTheme] = useState<Theme>(getStoredTheme)
@@ -32,7 +35,7 @@ const ResumePage = () => {
   }
 
   return (
-    <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
+    <ThemeProvider theme={siteTheme(theme)}>
       <div
         style={{
           background: theme === THEME.light ? "#fff" : "#000",
@@ -48,22 +51,22 @@ const ResumePage = () => {
           color={theme}
         />
         <MDBContainer fluid className="resume-page px-4 pb-5">
-          <HeaderPage text="My Resume" />
+          <HeaderPage text="Resume" />
           <MDBRow className="pb-5">
             <MDBCol md="4" lg="4">
-              <h1>Certificates</h1>
+              <HeadingLarge as="h2" marginTop="0" marginBottom="scale600">Certificates</HeadingLarge>
               <MDBRow>
                 <Certificates theme={theme} />
               </MDBRow>
             </MDBCol>
             <MDBCol md="4" lg="4">
-              <h1 className="mb-4">Experience</h1>
+              <HeadingLarge as="h2" marginTop="0" marginBottom="scale600">Experience</HeadingLarge>
               <MDBRow>
                 <Experience theme={theme} />
               </MDBRow>
             </MDBCol>
             <MDBCol md="4" lg="4">
-              <h1>Skills</h1>
+              <HeadingLarge as="h2" marginTop="0" marginBottom="scale600">Skills</HeadingLarge>
               <MDBRow>
                 <MDBCol className="my-4" md="6" lg="6">
                   <div style={color} className="resume-container">
@@ -71,7 +74,7 @@ const ResumePage = () => {
                       style={{ marginLeft: `1rem` }}
                       className="resume-content"
                     >
-                      <h4>Frontend</h4>
+                      <HeadingSmall as="h3" marginTop="0" marginBottom="scale300">Frontend</HeadingSmall>
                       <ul className="list-unstyled skills-list">
                         <Frontend />
                       </ul>
@@ -84,7 +87,7 @@ const ResumePage = () => {
                       style={{ marginLeft: `1rem` }}
                       className="resume-content"
                     >
-                      <h4>Backend</h4>
+                      <HeadingSmall as="h3" marginTop="0" marginBottom="scale300">Backend</HeadingSmall>
                       <ul className="list-unstyled skills-list">
                         <Backend />
                       </ul>
@@ -97,7 +100,7 @@ const ResumePage = () => {
                       style={{ marginLeft: `1rem` }}
                       className="resume-content"
                     >
-                      <h4>Framework & Libraries</h4>
+                      <HeadingSmall as="h3" marginTop="0" marginBottom="scale300">Framework & Libraries</HeadingSmall>
                       <ul className="list-unstyled skills-list">
                         <Frameworks />
                       </ul>
@@ -110,7 +113,7 @@ const ResumePage = () => {
                       style={{ marginLeft: `1rem` }}
                       className="resume-content"
                     >
-                      <h4>Data Handling</h4>
+                      <HeadingSmall as="h3" marginTop="0" marginBottom="scale300">Data Handling</HeadingSmall>
                       <ul className="list-unstyled skills-list">
                         <DataHandling />
                       </ul>
@@ -123,7 +126,7 @@ const ResumePage = () => {
                       style={{ marginLeft: `1rem` }}
                       className="resume-content"
                     >
-                      <h4>Design</h4>
+                      <HeadingSmall as="h3" marginTop="0" marginBottom="scale300">Design</HeadingSmall>
                       <ul className="list-unstyled skills-list">
                         <Design />
                       </ul>
@@ -136,7 +139,7 @@ const ResumePage = () => {
                       style={{ marginLeft: `1rem` }}
                       className="resume-content"
                     >
-                      <h4>Languages</h4>
+                      <HeadingSmall as="h3" marginTop="0" marginBottom="scale300">Languages</HeadingSmall>
                       <ul className="list-unstyled skills-list">
                         <Languages />
                       </ul>
@@ -149,7 +152,7 @@ const ResumePage = () => {
                       style={{ marginLeft: `1rem` }}
                       className="resume-content"
                     >
-                      <h4>Misc</h4>
+                      <HeadingSmall as="h3" marginTop="0" marginBottom="scale300">Misc</HeadingSmall>
                       <Accordion>
                         <Panel title="More information">
                           <MDBRow>
@@ -178,10 +181,11 @@ const ResumePage = () => {
   )
 }
 
-export const Head = () => (
+export const Head = ({ location }: HeadProps) => (
   <SEO
     title="Resume"
-    description="What you need to know about my experiences, skills, and many other. What stack i have or technologies i use. Find out more here."
+    description="Experience and skills of Fred Garingo, a senior full stack developer in Cebu. React, Next.js, TypeScript, Django, Node, cloud, and production AI."
+    pathname={location.pathname}
   />
 )
 

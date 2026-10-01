@@ -1,10 +1,22 @@
+import { type HeadProps } from 'gatsby'
 import { MDBCol, MDBContainer, MDBRow } from 'mdbreact';
 import React, { useState, useEffect } from 'react'
 import HeaderPage from '../components/HeaderPage';
 import Navbar from '../components/Navbar';
 import SEO from '../components/seo';
-import { ThemeProvider, DarkTheme, LightTheme } from 'baseui';
+import { ThemeProvider, styled } from 'baseui';
 import { THEME, getStoredTheme, type Theme } from '../types/theme';
+import { siteTheme } from '../theme/site';
+
+const PolicyCopy = styled('div', ({ $theme }) => ({
+    ...$theme.typography.ParagraphMedium,
+    maxWidth: '42rem',
+    h3: {
+        ...$theme.typography.HeadingSmall,
+        marginTop: $theme.sizing.scale900,
+        marginBottom: $theme.sizing.scale500,
+    },
+}))
 
 const PolicyPage = () => {
     const [theme, setTheme] = useState<Theme>(getStoredTheme)
@@ -14,7 +26,7 @@ const PolicyPage = () => {
     },[theme])
 
     return (
-        <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
+        <ThemeProvider theme={siteTheme(theme)}>
         <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
@@ -23,7 +35,7 @@ const PolicyPage = () => {
                 <MDBRow>
                     <MDBCol md="11" lg="11">
                         <HeaderPage text="Privacy Policy"/>
-                        <div className="content h4-responsive">
+                        <PolicyCopy>
                             <p>Your privacy is important to us. It is Fredrekt's policy to respect your privacy regarding any information we may collect from you across our website, <a href="http://fredgaringo.ga">http://fredgaringo.ga</a>, and other sites we own and operate.</p>
                             <p>We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.</p>
                             <p>We only retain collected information for as long as necessary to provide you with your requested service. What data we store, we’ll protect within commercially acceptable means to prevent loss and theft, as well as unauthorized access, disclosure, copying, use or modification.</p>
@@ -33,13 +45,13 @@ const PolicyPage = () => {
                             <p>Your continued use of our website will be regarded as acceptance of our practices around privacy and personal information. If you have any questions about how we handle user data and personal information, feel free to contact us.</p>
                             <p>This policy is effective as of 12 July 2020.</p>
                             <p><a href="https://getterms.io" title="Generate a free privacy policy">Privacy Policy created with GetTerms.</a></p>
-                        </div>
+                        </PolicyCopy>
                     </MDBCol>
                 </MDBRow>
                 <MDBRow className="my-4">
                     <MDBCol md="11" lg="11">
-                        <HeaderPage text="Terms & Conditions"/>
-                        <div className="content h4-responsive">
+                        <HeaderPage text="Terms & Conditions" level="h2"/>
+                        <PolicyCopy>
                             <h3>1. Terms</h3>
                             <p>By accessing the website at <a href="http://fredgaringo.ga">http://fredgaringo.ga</a>, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.</p>
                             <h3>2. Use License</h3>
@@ -71,13 +83,13 @@ const PolicyPage = () => {
                             <h3>8. Governing Law</h3>
                             <p>These terms and conditions are governed by and construed in accordance with the laws of Cebu City, Philippines and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.</p>
                             <p><a href="https://getterms.io" title="Generate a free terms of use document">Terms of Use created with GetTerms.</a></p>
-                        </div>
+                        </PolicyCopy>
                     </MDBCol>
                 </MDBRow>
                 <MDBRow className="my-4">
                     <MDBCol md="11" lg="11">
-                        <HeaderPage text="Cookies Policy"/>
-                        <div className="content h4-responsive">
+                        <HeaderPage text="Cookies Policy" level="h2"/>
+                        <PolicyCopy>
                             <p>This is the Cookie Policy for Fred Garingo, accessible from https://fredgaringo.ga/</p>
                             <p><strong>What Are Cookies</strong></p>
                             <p>As is common practice with almost all professional websites this site uses cookies, which are tiny files that are downloaded to your computer, to improve your experience. This page describes what information they gather, how we use it and why we sometimes need to store these cookies. We will also share how you can prevent these cookies from being stored however this may downgrade or 'break' certain elements of the sites functionality.</p>
@@ -107,7 +119,7 @@ const PolicyPage = () => {
                                 <ul>
                                 <li>By visiting this link: https://fredgaringo.ga/</li>
                             </ul>
-                        </div>
+                        </PolicyCopy>
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>
@@ -116,8 +128,12 @@ const PolicyPage = () => {
     )
 }
 
-export const Head = () => (
-    <SEO title="Policy" description="Terms & Conditions, Privacy Policy, Cookies Policy, all that legal stuff." />
+export const Head = ({ location }: HeadProps) => (
+    <SEO
+        title="Privacy, Terms, and Cookies"
+        description="Privacy policy, terms of use, and cookie policy for fredgaringo.ga, the portfolio of Fred Garingo."
+        pathname={location.pathname}
+    />
 )
 
 export default PolicyPage

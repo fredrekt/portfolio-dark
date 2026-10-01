@@ -111,6 +111,11 @@ export interface SeoQuery {
       title: string
       description: string
       author: string
+      siteUrl: string
+      jobTitle: string
+      locality: string
+      region: string
+      country: string
     }
   }
 }

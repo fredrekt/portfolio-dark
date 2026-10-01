@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { type HeadProps } from 'gatsby'
 import HeaderPage from '../components/HeaderPage'
 import { MDBContainer, MDBRow, MDBCol, MDBAnimation } from 'mdbreact'
 import SEO from '../components/seo'
-import { ThemeProvider, DarkTheme, LightTheme } from 'baseui';
+import { ThemeProvider } from 'baseui';
+import { ParagraphLarge } from 'baseui/typography';
 import Navbar from '../components/Navbar';
 import { Input, SIZE } from "baseui/input";
 import { styled } from "baseui";
@@ -14,6 +16,7 @@ import {Toast, KIND} from 'baseui/toast';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { THEME, getStoredTheme, type Theme } from '../types/theme';
+import { siteTheme } from '../theme/site';
 
 interface ContactForm {
     name: string
@@ -114,13 +117,16 @@ const ContactPage = () => {
     }
 
     return (
-        <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
+        <ThemeProvider theme={siteTheme(theme)}>
         <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
           } color={theme}/>
             <MDBContainer fluid className="px-4">
                 <HeaderPage text="Get in Touch"/>
+                <ParagraphLarge maxWidth="36rem" marginTop="0" marginBottom="scale800">
+                    Tell me about the product.
+                </ParagraphLarge>
                 <MDBRow>
                     <MDBCol md="8" lg="8">
                         <form onSubmit={(e)=>onSubmit(e)}>
@@ -198,8 +204,12 @@ const ContactPage = () => {
     )
 }
 
-export const Head = () => (
-    <SEO title="Contact" description="Got a project in mind? Feel free to reach out to me. I would love to help you with that. First let's talk about what you have in mind." />
+export const Head = ({ location }: HeadProps) => (
+    <SEO
+        title="Contact"
+        description="Contact Fred Garingo, a senior full stack developer in Cebu, about a product you want to build."
+        pathname={location.pathname}
+    />
 )
 
 export default ContactPage

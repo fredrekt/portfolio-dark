@@ -19,6 +19,12 @@ const plugins: NonNullable<GatsbyConfig["plugins"]> = [
   `gatsby-transformer-sharp`,
   `gatsby-plugin-sharp`,
   {
+    resolve: `gatsby-plugin-sitemap`,
+    options: {
+      excludes: [`/404`, `/404/`, `/404.html`],
+    },
+  },
+  {
     resolve: `gatsby-plugin-manifest`,
     options: {
       name: `Fred Garingo`,
@@ -62,8 +68,13 @@ if (process.env.GATSBY_GRAPHQL_URI) {
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Fred Garingo`,
-    description: `My Personal Digital Portfolio, made using gatsby. An Informative way of getting a job or exposing myself to many oppurtunities.`,
-    author: `Fredrick Garingo`,
+    description: `Senior full stack developer in Cebu. Fred Garingo builds web and mobile products end to end, from frontend architecture and backend services to production AI.`,
+    author: `Fred Garingo`,
+    siteUrl: `https://fredgaringo.ga`,
+    jobTitle: `Senior Full Stack Developer`,
+    locality: `Talisay City`,
+    region: `Cebu`,
+    country: `Philippines`,
   },
   trailingSlash: `always`,
   graphqlTypegen: true,

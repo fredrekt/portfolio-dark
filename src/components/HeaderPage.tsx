@@ -1,21 +1,21 @@
 import React from "react"
-import { styled } from "baseui"
-
-const Header = styled("h1", {
-  fontSize: `5rem`,
-  fontFamily: `'Lato', sans-serif`,
-  letterSpacing: `-.01em`,
-  "@media screen and (max-width: 540px)": {
-    fontSize: `3rem`,
-  },
-})
+import { HeadingXXLarge } from "baseui/typography"
+import { pageTitleFont } from "../theme/site"
 
 interface HeaderPageProps {
   text: string
+  level?: "h1" | "h2"
 }
 
-const HeaderPage = ({ text }: HeaderPageProps) => (
-  <Header className="my-5">{text}</Header>
+const HeaderPage = ({ text, level = "h1" }: HeaderPageProps) => (
+  <HeadingXXLarge
+    as={level}
+    font={pageTitleFont}
+    marginTop="scale1200"
+    marginBottom="scale800"
+  >
+    {text}
+  </HeadingXXLarge>
 )
 
 export default HeaderPage

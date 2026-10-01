@@ -9748,25 +9748,45 @@ type SitePluginSortInput = {
 
 type SiteSiteMetadata = {
   readonly author: Maybe<Scalars['String']>;
+  readonly country: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
+  readonly jobTitle: Maybe<Scalars['String']>;
+  readonly locality: Maybe<Scalars['String']>;
+  readonly region: Maybe<Scalars['String']>;
+  readonly siteUrl: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
 };
 
 type SiteSiteMetadataFieldSelector = {
   readonly author: InputMaybe<FieldSelectorEnum>;
+  readonly country: InputMaybe<FieldSelectorEnum>;
   readonly description: InputMaybe<FieldSelectorEnum>;
+  readonly jobTitle: InputMaybe<FieldSelectorEnum>;
+  readonly locality: InputMaybe<FieldSelectorEnum>;
+  readonly region: InputMaybe<FieldSelectorEnum>;
+  readonly siteUrl: InputMaybe<FieldSelectorEnum>;
   readonly title: InputMaybe<FieldSelectorEnum>;
 };
 
 type SiteSiteMetadataFilterInput = {
   readonly author: InputMaybe<StringQueryOperatorInput>;
+  readonly country: InputMaybe<StringQueryOperatorInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
+  readonly jobTitle: InputMaybe<StringQueryOperatorInput>;
+  readonly locality: InputMaybe<StringQueryOperatorInput>;
+  readonly region: InputMaybe<StringQueryOperatorInput>;
+  readonly siteUrl: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
 };
 
 type SiteSiteMetadataSortInput = {
   readonly author: InputMaybe<SortOrderEnum>;
+  readonly country: InputMaybe<SortOrderEnum>;
   readonly description: InputMaybe<SortOrderEnum>;
+  readonly jobTitle: InputMaybe<SortOrderEnum>;
+  readonly locality: InputMaybe<SortOrderEnum>;
+  readonly region: InputMaybe<SortOrderEnum>;
+  readonly siteUrl: InputMaybe<SortOrderEnum>;
   readonly title: InputMaybe<SortOrderEnum>;
 };
 
@@ -9908,7 +9928,7 @@ type RightMiscSkillsQuery = { readonly gcms: { readonly skills: ReadonlyArray<{ 
 type SeoDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type SeoDataQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null, readonly description: string | null, readonly author: string | null } | null } | null };
+type SeoDataQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null, readonly description: string | null, readonly author: string | null, readonly siteUrl: string | null, readonly jobTitle: string | null, readonly locality: string | null, readonly region: string | null, readonly country: string | null } | null } | null };
 
 type WorksQueryVariables = Exact<{ [key: string]: never; }>;
 

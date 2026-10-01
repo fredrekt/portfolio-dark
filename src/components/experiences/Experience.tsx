@@ -2,6 +2,7 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { MDBCol } from "mdbreact"
 import Moment from "react-moment"
+import { HeadingSmall, HeadingXSmall, HeadingMedium } from "baseui/typography"
 import type { ExperiencesQuery } from "../../types/cms"
 import type { Theme } from "../../types/theme"
 
@@ -21,17 +22,17 @@ const Experience = ({ theme }: ExperienceProps) => {
     if (startDate.toString() === endDate.toString()) {
       return (
         <>
-          <h2>{startingDate}</h2>
+          <HeadingMedium as="h3" marginTop="0" marginBottom="scale200">{startingDate}</HeadingMedium>
         </>
       )
     } else {
       return (
         <>
-          <h2>
+          <HeadingMedium as="h3" marginTop="0" marginBottom="scale200">
             {startingDate}
             <span> - </span>
             {endingDate}
-          </h2>
+          </HeadingMedium>
         </>
       )
     }
@@ -60,12 +61,14 @@ const Experience = ({ theme }: ExperienceProps) => {
             <MDBCol key={experience.id} className="my-4" md="12" lg="12">
               <div style={color} className="resume-container">
                 <div style={{ marginLeft: `1rem` }} className="resume-content">
-                  {experience.current && <h2>Current</h2>}
+                  {experience.current && (
+                    <HeadingMedium as="h3" marginTop="0" marginBottom="scale200">Current</HeadingMedium>
+                  )}
                   {experience.startDate !== null &&
                     experience.endDate !== null &&
                     compareDates(experience.startDate, experience.endDate)}
-                  <h4>{experience.company}</h4>
-                  <h5>{experience.job}</h5>
+                  <HeadingSmall as="h4" marginTop="0" marginBottom="scale100">{experience.company}</HeadingSmall>
+                  <HeadingXSmall as="h5" marginTop="0" marginBottom="scale300">{experience.job}</HeadingXSmall>
                   <ul className="list-unstyled skills-list">
                     {experience.jobDescription.map(desc => (
                       <li>{desc}</li>

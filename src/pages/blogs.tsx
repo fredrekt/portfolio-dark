@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { ThemeProvider, DarkTheme, LightTheme } from 'baseui';
+import { type HeadProps } from 'gatsby'
+import { ThemeProvider } from 'baseui';
 import SEO from '../components/seo';
 import Navbar from '../components/Navbar';
 import { MDBContainer, MDBRow } from 'mdbreact';
 import HeaderPage from '../components/HeaderPage';
 import BlogPreview from '../components/blog/BlogPreview';
 import { THEME, getStoredTheme, type Theme } from '../types/theme';
+import { siteTheme } from '../theme/site';
 
 const BlogPage = () => {
     const [theme, setTheme] = useState<Theme>(getStoredTheme)
@@ -15,13 +17,13 @@ const BlogPage = () => {
     },[theme])
 
     return (
-        <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
+        <ThemeProvider theme={siteTheme(theme)}>
         <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
             } color={theme}/>
             <MDBContainer fluid className="px-4">
-                <HeaderPage text="Blogs"/>
+                <HeaderPage text="Blog"/>
             </MDBContainer>
             <MDBContainer fluid className="px-4">
                 <MDBRow className="pb-5">
@@ -34,8 +36,12 @@ const BlogPage = () => {
     )
 }
 
-export const Head = () => (
-    <SEO title="Blog" description="Read blogs about technology, development, PWA." />
+export const Head = ({ location }: HeadProps) => (
+    <SEO
+        title="Blog"
+        description="Writing by Fred Garingo, a senior full stack developer in Cebu, on building and shipping software."
+        pathname={location.pathname}
+    />
 )
 
 export default BlogPage

@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { MDBCol, MDBContainer } from "mdbreact"
 import Markdown from "markdown-to-jsx"
 import { Accordion, Panel } from "baseui/accordion"
+import { HeadingLarge, HeadingSmall, ParagraphMedium } from "baseui/typography"
 import Moment from "react-moment"
 import type { BlogCardsQuery } from "../../types/cms"
 
@@ -31,17 +32,17 @@ const BlogCards = () => {
     <Panel key={blog.id} title={blog.title}>
       <MDBContainer>
         <div className="blog-header">
-          <h1 className="display-3">{blog.title}</h1>
+          <HeadingLarge as="h2" marginTop="0" marginBottom="scale500">{blog.title}</HeadingLarge>
           <div className="d-flex justify-content-between pb-4">
-            <h3 className="h3-responsive text-capitalize">
+            <HeadingSmall as="h3" marginTop="0" marginBottom="0">
               {blog.blogCategory}
-            </h3>
-            <h3 className="h5-responsive grey-text text-capitalize">
+            </HeadingSmall>
+            <HeadingSmall as="p" color="contentSecondary" marginTop="0" marginBottom="0">
               <Moment format="MMM DD, YYYY">{blog.createdAt}</Moment>
-            </h3>
+            </HeadingSmall>
           </div>
         </div>
-        <Markdown style={{ lineHeight: 1.4 }} className="h3-responsive">
+        <Markdown options={{ overrides: { p: { component: ParagraphMedium } } }}>
           {blog.content.markdown}
         </Markdown>
       </MDBContainer>

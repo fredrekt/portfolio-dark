@@ -4,13 +4,14 @@ import { MDBContainer, MDBRow, MDBCol, MDBAnimation } from 'mdbreact'
 import { Parallax } from 'react-parallax'
 import SEO from '../components/seo'
 import Navbar from '../components/Navbar'
-import { ThemeProvider, DarkTheme, LightTheme } from 'baseui'
-import { styled } from "styletron-react";
+import { ThemeProvider } from 'baseui'
 import { Button } from "baseui/button";
+import { HeadingXLarge, ParagraphLarge } from "baseui/typography";
 import ArrowRight from 'baseui/icon/arrow-right';
-import { Link } from 'gatsby'
+import { Link, type HeadProps } from 'gatsby'
 import Work from '../components/works/Work'
 import { THEME, getStoredTheme, type Theme } from '../types/theme'
+import { pageTitleFont, siteTheme } from '../theme/site'
 
 const WorksPage = () => {
     const [theme, setTheme] = useState<Theme>(getStoredTheme)
@@ -20,31 +21,17 @@ const WorksPage = () => {
         typeof window !== `undefined` && window.localStorage.setItem('themeColor', theme)
     },[theme])
 
-    const HeaderFooter = styled('h1', {
-        fontSize: `5rem`,
-        fontFamily: `'Lato', sans-serif`,
-        letterSpacing: `-.01em`,
-        "@media screen and (max-width: 540px)":{
-            fontSize: `3rem`
-        }
-    })
-
-    const HeaderFooterContent = styled('p', {
-        fontSize: `1.2rem`,
-        fontFamily: `'Biryani', sans-serif`,
-        "@media screen and (max-width: 540px)":{
-            fontSize: `1rem`
-        }
-    })
-
     return (
-        <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>
+        <ThemeProvider theme={siteTheme(theme)}>
         <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
           } color={theme}/>
         <MDBContainer fluid className="px-4">
-            <HeaderPage text="My Works"/>
+            <HeaderPage text="Selected Work"/>
+            <ParagraphLarge maxWidth="36rem" marginTop="0" marginBottom="scale800">
+                Product engineering across SaaS, marketplaces, and client platforms.
+            </ParagraphLarge>
             <MDBRow>
                 <Work/>
             </MDBRow>
@@ -56,11 +43,11 @@ const WorksPage = () => {
                         <div onFocus={()=>console.log(`focused`)} onMouseOver={()=>setHover(true)} onMouseLeave={()=>setHover(false)} style={{ height: 400, background: hover ? "#000" : undefined, transition: `1s` }}>
                             <div className={`${!hover && 'd-none'} work-container flex-center white-text p-5`}>
                                 <MDBAnimation type="slideInUp">
-                                <h1 className="h1-responsive">
+                                <HeadingXLarge color="#fff" marginTop="0" marginBottom="0">
                                     <span className="mx-lg-4 mx-md-4 mx-0">Code</span>  | 
                                     <span className="mx-lg-4 mx-md-4 mx-2">Play</span>  | 
                                     <span className="mx-lg-4 mx-md-4 mx-2">Gym</span>
-                                </h1>
+                                </HeadingXLarge>
                                 </MDBAnimation>
                             </div>
                         </div>
@@ -69,13 +56,13 @@ const WorksPage = () => {
             </MDBRow>
             <MDBRow className="py-5">
                 <MDBCol md="12" lg="12">
-                    <HeaderFooter className="text-center">
+                    <HeadingXLarge className="text-center" font={pageTitleFont} marginTop="0" marginBottom="scale600">
                         Got a project in mind?
-                    </HeaderFooter>
+                    </HeadingXLarge>
                     <div className="d-flex flex-column align-items-center">
-                        <HeaderFooterContent className="lead text-center">
-                            Tell me about it, maybe i can help with it.
-                        </HeaderFooterContent>
+                        <ParagraphLarge marginTop="0" marginBottom="scale600">
+                            Tell me about the product.
+                        </ParagraphLarge>
                         <Link to="/contact">
                             <Button endEnhancer={<ArrowRight size={24} />}>
                                 Send Message 
@@ -90,8 +77,12 @@ const WorksPage = () => {
     )
 }
 
-export const Head = () => (
-    <SEO title="Works" description="A showcase of my works & projects that i have completed. Also other applications that i am proud and of still under development. Learn more here." />
+export const Head = ({ location }: HeadProps) => (
+    <SEO
+        title="Selected Work"
+        description="Selected product work by Fred Garingo, a senior full stack developer in Cebu. SaaS, marketplaces, sales technology, and client platforms."
+        pathname={location.pathname}
+    />
 )
 
 export default WorksPage

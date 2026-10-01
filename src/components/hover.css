@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Biryani:wght@400;600;700;800;900&family=Lato:wght@900&family=Playball&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700;900&family=Playball&display=swap');
 
-html{
-  font-family: 'Biryani', sans-serif!important;
+html body{
+  font-family: Lato, sans-serif;
+  font-weight: 400;
 }
 body{
   margin: 0;
@@ -21,16 +22,14 @@ body{
   color: inherit !important;
   border: 1px solid currentColor;
 }
-h1, h2, h3, h4, h5, h6{
-  font-family: 'Lato', sans-serif!important;
-}
 .special-font{
-  font-family: 'Playball', cursive!important;
+  font-family: Playball, cursive !important;
+}
+[data-baseweb="typo-headingxxlarge"]{
+  letter-spacing: -0.01em;
 }
 .skills-list li{
   line-height: 1.8;
-  font-family: 'Biryani', sans-serif!important;
-  font-size: 1rem;
 }
 .responsive-mobile{
   display: none;
@@ -61,8 +60,7 @@ span > a:hover::before {
   transform: scaleX(1);
 }
 .content-container-link {
-  font-size: 1.2rem!important;
-  font-family: 'Biryani', sans-serif!important;
+  color: #fff;
 }
 .collapse-menu-responsive{
   align-items: center!important;
@@ -77,12 +75,6 @@ span > a:hover::before {
     }
     .hidden-mobile{
       display: none;
-    }
-    .content-container > p {
-      font-size: .7rem;
-    }
-    .content-container-link {
-      font-size: .8rem!important;
     }
     .collapse-menu-responsive{
       align-items: flex-end!important;
