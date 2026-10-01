@@ -1,13 +1,8 @@
-import type { GatsbyConfig } from "gatsby"
-import dotenv from "dotenv"
+require("dotenv").config()
 
-dotenv.config()
+const trackingIds = [process.env.GATSBY_GA_ID].filter(Boolean)
 
-const trackingIds = [process.env.GATSBY_GA_ID].filter(
-  (id): id is string => Boolean(id)
-)
-
-const plugins: NonNullable<GatsbyConfig["plugins"]> = [
+const plugins = [
   `gatsby-plugin-image`,
   {
     resolve: `gatsby-source-filesystem`,
@@ -65,7 +60,7 @@ if (process.env.GATSBY_GRAPHQL_URI) {
   })
 }
 
-const config: GatsbyConfig = {
+module.exports = {
   siteMetadata: {
     title: `Fred Garingo`,
     description: `Senior full stack developer in Cebu. Fred Garingo builds web and mobile products end to end, from frontend architecture and backend services to production AI.`,
@@ -80,5 +75,3 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   plugins,
 }
-
-export default config

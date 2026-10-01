@@ -1,13 +1,11 @@
-import path from "path"
-import type { GatsbyNode } from "gatsby"
-import type { BlogListQuery } from "./src/types/cms"
+const path = require("path")
 
-export const createPages: GatsbyNode["createPages"] = async ({
+exports.createPages = async ({
   graphql,
   actions: { createPage },
   reporter,
 }) => {
-  const result = await graphql<BlogListQuery>(`
+  const result = await graphql(`
     query BlogPages {
       gcms {
         blogs(where: { blogCategory_not: movies }) {
