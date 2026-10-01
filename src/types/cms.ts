@@ -76,7 +76,7 @@ export interface Blog {
   blogCategory: string
   content: { markdown: string }
   id: string
-  preview: { url: string } | null
+  preview: { url: string; shareImage?: string | null } | null
   title: string
   createdAt: string
   description: string

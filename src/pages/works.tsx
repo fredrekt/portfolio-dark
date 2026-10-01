@@ -81,6 +81,7 @@ export const Head = ({ location }: HeadProps) => (
     <SEO
         title="Selected Work"
         description="Selected product work by Fred Garingo, a senior full stack developer in Cebu. SaaS, marketplaces, sales technology, and client platforms."
+        image="/og/works.png"
         pathname={location.pathname}
     />
 )

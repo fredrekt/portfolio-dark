@@ -53,6 +53,11 @@ export const pageQuery = graphql`
                 id
                 preview {
                   url
+                  shareImage: url(
+                    transformation: {
+                      image: { resize: { width: 1200, height: 630, fit: crop } }
+                    }
+                  )
                 }
                 title
                 createdAt
@@ -68,7 +73,8 @@ export const Head = ({ data, location }: HeadProps<BlogPageQuery>) => {
         <SEO
             title={blog?.title ?? "Blog"}
             description={blog?.description}
-            image={blog?.preview?.url}
+            image={blog?.preview?.shareImage ?? blog?.preview?.url}
+            imageSize={blog?.preview?.shareImage ? { width: 1200, height: 630 } : undefined}
             pathname={location.pathname}
             type="article"
             publishedAt={blog?.createdAt}

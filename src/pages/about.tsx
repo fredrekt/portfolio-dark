@@ -104,6 +104,7 @@ export const Head = ({ location }: HeadProps) => (
     <SEO
         title="About"
         description="Senior full stack developer in Cebu. Fred Garingo ships web and mobile products end to end, including production AI, React, Next.js, and backend services."
+        image="/og/about.png"
         pathname={location.pathname}
     />
 )

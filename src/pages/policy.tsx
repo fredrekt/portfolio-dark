@@ -132,6 +132,7 @@ export const Head = ({ location }: HeadProps) => (
     <SEO
         title="Privacy, Terms, and Cookies"
         description="Privacy policy, terms of use, and cookie policy for fredgaringo.ga, the portfolio of Fred Garingo."
+        image="/og/policy.png"
         pathname={location.pathname}
     />
 )

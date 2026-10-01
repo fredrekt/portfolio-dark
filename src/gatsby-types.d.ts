@@ -9918,7 +9918,7 @@ type ProductPageQueryQueryVariables = Exact<{
 }>;
 
 
-type ProductPageQueryQuery = { readonly gcms: { readonly blog: { readonly blogCategory: GCMS_BlogCategory | null, readonly id: string, readonly title: string | null, readonly createdAt: any, readonly description: string | null, readonly content: { readonly markdown: string } | null, readonly preview: { readonly url: string } | null } | null } };
+type ProductPageQueryQuery = { readonly gcms: { readonly blog: { readonly blogCategory: GCMS_BlogCategory | null, readonly id: string, readonly title: string | null, readonly createdAt: any, readonly description: string | null, readonly content: { readonly markdown: string } | null, readonly preview: { readonly url: string, readonly shareImage: string } | null } | null } };
 
 type RightMiscSkillsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -9934,11 +9934,6 @@ type WorksQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type WorksQuery = { readonly gcms: { readonly works: ReadonlyArray<{ readonly id: string, readonly project: string | null, readonly link: string | null, readonly description: string | null, readonly previewImage: { readonly url: string, readonly previewImageWork: ReadonlyArray<{ readonly previewImage: { readonly url: string } | null }> } | null }> } };
-
-type BlogPagesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type BlogPagesQuery = { readonly gcms: { readonly blogs: ReadonlyArray<{ readonly id: string, readonly title: string | null }> } };
 
 
 }

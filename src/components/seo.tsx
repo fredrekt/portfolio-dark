@@ -12,12 +12,17 @@ interface SEOProps {
   title: string
   description?: string
   image?: string
+  imageSize?: { width: number; height: number }
   pathname?: string
   noIndex?: boolean
   type?: "website" | "article"
   publishedAt?: string
   children?: ReactNode
 }
+
+const DEFAULT_IMAGE = "/og/home.png"
+const DEFAULT_IMAGE_WIDTH = 1200
+const DEFAULT_IMAGE_HEIGHT = 630
 
 function absoluteUrl(siteUrl: string, pathname = "/") {
   const path = pathname.startsWith("/") ? pathname : `/${pathname}`
@@ -27,7 +32,8 @@ function absoluteUrl(siteUrl: string, pathname = "/") {
 function SEO({
   title,
   description = ``,
-  image = ``,
+  image = DEFAULT_IMAGE,
+  imageSize,
   pathname = `/`,
   noIndex = false,
   type = "website",
@@ -67,11 +73,14 @@ function SEO({
   const metaDescription = description || siteDescription
   const documentTitle = `${title} | ${siteTitle}`
   const canonical = absoluteUrl(siteUrl, pathname)
-  const socialImage = image
-    ? image.startsWith("http")
-      ? image
-      : absoluteUrl(siteUrl, image)
-    : undefined
+  const imagePath = image || DEFAULT_IMAGE
+  const isLocalImage = !imagePath.startsWith("http")
+  const socialImage = isLocalImage ? absoluteUrl(siteUrl, imagePath) : imagePath
+  const socialImageSize = isLocalImage
+    ? { width: DEFAULT_IMAGE_WIDTH, height: DEFAULT_IMAGE_HEIGHT }
+    : imageSize
+  const imageAlt =
+    pathname === "/" ? `${author}, ${jobTitle}` : `${title} | ${author}, ${jobTitle}`
   const personId = `${siteUrl}/#person`
   const websiteId = `${siteUrl}/#website`
 
@@ -112,6 +121,7 @@ function SEO({
       url: canonical,
       name: documentTitle,
       description: metaDescription,
+      primaryImageOfPage: socialImage,
       isPartOf: { "@id": websiteId },
       about: { "@id": personId },
       inLanguage: "en",
@@ -163,17 +173,23 @@ function SEO({
       />
       <meta property="og:title" content={documentTitle} />
       <meta property="og:description" content={metaDescription} />
-      {socialImage ? <meta property="og:image" content={socialImage} /> : null}
+      <meta property="og:image" content={socialImage} />
+      <meta property="og:image:alt" content={imageAlt} />
+      {isLocalImage ? <meta property="og:image:type" content="image/png" /> : null}
+      {socialImageSize ? (
+        <>
+          <meta property="og:image:width" content={String(socialImageSize.width)} />
+          <meta property="og:image:height" content={String(socialImageSize.height)} />
+        </>
+      ) : null}
       {type === "article" && publishedAt ? (
         <meta property="article:published_time" content={publishedAt} />
       ) : null}
-      <meta
-        name="twitter:card"
-        content={socialImage ? "summary_large_image" : "summary"}
-      />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={documentTitle} />
       <meta name="twitter:description" content={metaDescription} />
-      {socialImage ? <meta name="twitter:image" content={socialImage} /> : null}
+      <meta name="twitter:image" content={socialImage} />
+      <meta name="twitter:image:alt" content={imageAlt} />
       <script type="application/ld+json">
         {JSON.stringify({ "@context": "https://schema.org", "@graph": graph })}
       </script>
