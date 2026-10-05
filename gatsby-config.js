@@ -1,5 +1,7 @@
 require("dotenv").config()
 
+const { SITE_URL } = require("./src/constants/site")
+
 const trackingIds = [process.env.GATSBY_GA_ID].filter(Boolean)
 
 const plugins = [
@@ -65,7 +67,7 @@ module.exports = {
     title: `Fred Garingo`,
     description: `Senior full stack developer in Cebu. Fred Garingo builds web and mobile products end to end, from frontend architecture and backend services to production AI.`,
     author: `Fred Garingo`,
-    siteUrl: `https://fredgaringo.ga`,
+    siteUrl: SITE_URL,
     jobTitle: `Senior Full Stack Developer`,
     locality: `Talisay City`,
     region: `Cebu`,

@@ -7,6 +7,7 @@ import SEO from '../components/seo';
 import { ThemeProvider, styled } from 'baseui';
 import { THEME, getStoredTheme, type Theme } from '../types/theme';
 import { siteTheme } from '../theme/site';
+import { SITE_URL } from '../constants/site';
 
 const PolicyCopy = styled('div', ({ $theme }) => ({
     ...$theme.typography.ParagraphMedium,
@@ -36,7 +37,7 @@ const PolicyPage = () => {
                     <MDBCol md="11" lg="11">
                         <HeaderPage text="Privacy Policy"/>
                         <PolicyCopy>
-                            <p>Your privacy is important to us. It is Fredrekt's policy to respect your privacy regarding any information we may collect from you across our website, <a href="http://fredgaringo.ga">http://fredgaringo.ga</a>, and other sites we own and operate.</p>
+                            <p>Your privacy is important to us. It is Fredrekt's policy to respect your privacy regarding any information we may collect from you across our website, <a href={SITE_URL}>{SITE_URL}</a>, and other sites we own and operate.</p>
                             <p>We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.</p>
                             <p>We only retain collected information for as long as necessary to provide you with your requested service. What data we store, we’ll protect within commercially acceptable means to prevent loss and theft, as well as unauthorized access, disclosure, copying, use or modification.</p>
                             <p>We don’t share any personally identifying information publicly or with third-parties, except when required to by law.</p>
@@ -53,7 +54,7 @@ const PolicyPage = () => {
                         <HeaderPage text="Terms & Conditions" level="h2"/>
                         <PolicyCopy>
                             <h3>1. Terms</h3>
-                            <p>By accessing the website at <a href="http://fredgaringo.ga">http://fredgaringo.ga</a>, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.</p>
+                            <p>By accessing the website at <a href={SITE_URL}>{SITE_URL}</a>, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.</p>
                             <h3>2. Use License</h3>
                             <ol type="a">
                             <li>Permission is granted to temporarily download one copy of the materials (information or software) on Fredrekt's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
@@ -90,7 +91,7 @@ const PolicyPage = () => {
                     <MDBCol md="11" lg="11">
                         <HeaderPage text="Cookies Policy" level="h2"/>
                         <PolicyCopy>
-                            <p>This is the Cookie Policy for Fred Garingo, accessible from https://fredgaringo.ga/</p>
+                            <p>This is the Cookie Policy for Fred Garingo, accessible from {SITE_URL}/</p>
                             <p><strong>What Are Cookies</strong></p>
                             <p>As is common practice with almost all professional websites this site uses cookies, which are tiny files that are downloaded to your computer, to improve your experience. This page describes what information they gather, how we use it and why we sometimes need to store these cookies. We will also share how you can prevent these cookies from being stored however this may downgrade or 'break' certain elements of the sites functionality.</p>
                             <p>For more general information on cookies, please read <a href="https://www.cookieconsent.com/what-are-cookies/">"What Are Cookies"</a>. Information regarding cookies from this Cookies Policy are from <a href="https://www.generateprivacypolicy.com/">the Privacy Policy Generator</a>.</p>
@@ -117,7 +118,7 @@ const PolicyPage = () => {
                                 <p>Hopefully that has clarified things for you and as was previously mentioned if there is something that you aren't sure whether you need or not it's usually safer to leave cookies enabled in case it does interact with one of the features you use on our site.</p>
                                 <p>However if you are still looking for more information then you can contact us through one of our preferred contact methods:</p>
                                 <ul>
-                                <li>By visiting this link: https://fredgaringo.ga/</li>
+                                <li>By visiting this link: {SITE_URL}/</li>
                             </ul>
                         </PolicyCopy>
                     </MDBCol>
@@ -131,7 +132,7 @@ const PolicyPage = () => {
 export const Head = ({ location }: HeadProps) => (
     <SEO
         title="Privacy, Terms, and Cookies"
-        description="Privacy policy, terms of use, and cookie policy for fredgaringo.ga, the portfolio of Fred Garingo."
+        description={`Privacy policy, terms of use, and cookie policy for ${SITE_URL.replace(/^https?:\/\//, "")}, the portfolio of Fred Garingo.`}
         image="/og/policy.png"
         pathname={location.pathname}
     />

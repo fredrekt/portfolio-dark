@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fredgaringo.ga/sitemap-index.xml
+Sitemap: https://fredgaringo.com/sitemap-index.xml

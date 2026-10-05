@@ -1,4 +1,8 @@
+require("dotenv").config()
+
+const fs = require("fs")
 const path = require("path")
+const { SITE_URL } = require("./src/constants/site")
 
 exports.createPages = async ({
   graphql,
@@ -32,4 +36,12 @@ exports.createPages = async ({
       },
     })
   )
+}
+
+exports.onPostBuild = () => {
+  const destination = path.join(__dirname, "public", "robots.txt")
+  const body = `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap-index.xml\n`
+
+  fs.mkdirSync(path.dirname(destination), { recursive: true })
+  fs.writeFileSync(destination, body)
 }
