@@ -19,35 +19,23 @@ declare module "mdbreact" {
   export const MDBMask: any
 }
 
-declare module "emailjs-com" {
-  export interface EmailJSResponseStatus {
-    status: number
-    text: string
-  }
-
-  export interface EmailJS {
-    sendForm: (
-      serviceID: string,
-      templateID: string,
-      form: string | HTMLFormElement,
-      userID: string
-    ) => Promise<EmailJSResponseStatus>
-  }
-
-  const emailjs: EmailJS
-  export default emailjs
-}
-
 declare module "react-google-recaptcha" {
-  import { FC } from "react"
+  import { Component, Ref } from "react"
 
   interface ReCAPTCHAProps {
     sitekey: string
+    theme?: "light" | "dark"
     onChange?: (token: string | null) => void
+    onExpired?: () => void
+    onErrored?: () => void
+    ref?: Ref<ReCAPTCHA>
   }
 
-  const ReCAPTCHA: FC<ReCAPTCHAProps>
-  export default ReCAPTCHA
+  export default class ReCAPTCHA extends Component<ReCAPTCHAProps> {
+    reset(): void
+    execute(): void
+    getValue(): string | null
+  }
 }
 
 declare module "react-hamburger-menu" {

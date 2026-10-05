@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { type HeadProps } from 'gatsby'
 import HeaderPage from '../components/HeaderPage'
-import { MDBContainer, MDBRow, MDBCol, MDBAnimation } from 'mdbreact'
 import SEO from '../components/seo'
 import { ThemeProvider } from 'baseui';
 import { ParagraphLarge } from 'baseui/typography';
@@ -10,13 +9,20 @@ import { Input, SIZE } from "baseui/input";
 import { styled } from "baseui";
 import ArrowRight from 'baseui/icon/arrow-right';
 import {Button} from 'baseui/button';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 import ReCAPTCHA from "react-google-recaptcha";
-import {Toast, KIND} from 'baseui/toast';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { THEME, getStoredTheme, type Theme } from '../types/theme';
 import { siteTheme } from '../theme/site';
+import { MDBContainer, MDBRow, MDBCol } from 'mdbreact'
+import {
+    EMAILJS_PUBLIC_KEY,
+    EMAILJS_SERVICE_ID,
+    EMAILJS_TEMPLATE_ID,
+    RECAPTCHA_SITE_KEY,
+    isContactFormConfigured,
+} from '../constants/emailjs';
 
 interface ContactForm {
     name: string
@@ -41,42 +47,43 @@ const MessageField = styled('textarea', ({ $theme }) => ({
         outline: 'none',
         borderColor: $theme.colors.borderSelected,
     },
+    '::placeholder': {
+        color: $theme.colors.inputPlaceholder,
+    },
 }));
 
+
+const emptyForm: ContactForm = { name: '', email: '', subject: '', message: '' }
+
 const toastSuccess = () => {
-    toast.dark(`Message Sent!`, {
+    toast.dark("Message sent! I'll get back to you soon.", {
         position: "top-right",
         autoClose: 5000,
-        hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        progressStyle: { 
-            background: '#fafafa'
-        },
-        });
+    });
+}
+
+const toastFailure = () => {
+    toast.error('Something went wrong. Your message is still here, so please try again.', {
+        position: "top-right",
+        autoClose: 7000,
+        closeOnClick: true,
+        pauseOnHover: true,
+    });
 }
 
 const ContactPage = () => {
     const [theme, setTheme] = useState<Theme>(getStoredTheme);
-    const [formData, setFormData] = useState<ContactForm>({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-    });
-    const [captcha, setCaptcha] = useState<string | null>('')
+    const [formData, setFormData] = useState<ContactForm>(emptyForm);
+    const [captcha, setCaptcha] = useState<string | null>(null)
     const [btnLoading, setBtnLoading] = useState(false)
-    const [error, setError] = useState(false)
-     
+    const [captchaError, setCaptchaError] = useState(false)
+    const recaptchaRef = useRef<ReCAPTCHA>(null)
+
     useEffect(() => {
         typeof window !== `undefined` && window.localStorage.setItem('themeColor', theme)
     },[theme])
-
-    const loadingState = { 
-        isLoading: btnLoading? true : false
-    }
 
     const { name, email, subject, message } = formData
 
@@ -88,31 +95,45 @@ const ContactPage = () => {
         setFormData(prev => ({ ...prev, [field]: value }))
     }
 
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const onCaptchaChange = (value: string | null) => {
+        setCaptcha(value)
+        if (value) setCaptchaError(false)
+    }
+
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if(captcha === null || captcha.length <= 0){
-            setError(true)
+        if (btnLoading) return
+
+        if (!isContactFormConfigured) {
+            console.error('Contact form is missing GATSBY_EMAILJS_* / GATSBY_RECAPTCHA_SITEKEY env vars')
+            toastFailure()
+            return
         }
-        else{
-            setBtnLoading(true);
-            emailjs.sendForm('gmail', 'digital_portfolio', e.currentTarget, 'user_XIKYWP5J2mUApRI1C06BW')
-            .then((result) => {
-                console.log(result.text);
-                setTimeout(()=>{
-                    setBtnLoading(false)
-                    setFormData({
-                        name: '',
-                        email: '',
-                        subject: '',
-                        message: ''
-                    })
-                    toastSuccess();
-                    setError(false);
-                },1500)
-            }, (error: { text?: string }) => {
-                console.log(error.text);
-                window.location.reload();
-            });
+
+        if (!captcha) {
+            setCaptchaError(true)
+            return
+        }
+
+        setBtnLoading(true);
+        try {
+            await emailjs.sendForm(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                e.currentTarget,
+                { publicKey: EMAILJS_PUBLIC_KEY }
+            )
+            setFormData(emptyForm)
+            toastSuccess();
+        } catch (err) {
+            // Keep what the visitor typed so they can retry without rewriting it.
+            console.error('Failed to send contact message', err)
+            toastFailure();
+        } finally {
+            // A captcha token is single-use, so always require a fresh one.
+            recaptchaRef.current?.reset()
+            setCaptcha(null)
+            setBtnLoading(false)
         }
     }
 
@@ -129,10 +150,12 @@ const ContactPage = () => {
                 </ParagraphLarge>
                 <MDBRow>
                     <MDBCol md="8" lg="8">
-                        <form onSubmit={(e)=>onSubmit(e)}>
+                        <form onSubmit={onSubmit} aria-busy={btnLoading}>
                         <div className="mb-4">
                             <Input
                                 name="name"
+                                autoComplete="name"
+                                aria-label="Your name"
                                 value={name}
                                 onChange={e=>onChange(e)}
                                 placeholder="Your Name"
@@ -146,6 +169,8 @@ const ContactPage = () => {
                         <div className="my-4">
                             <Input
                                 name="email"
+                                autoComplete="email"
+                                aria-label="Your email"
                                 value={email}
                                 onChange={e=>onChange(e)}
                                 placeholder="Your Email"
@@ -159,6 +184,8 @@ const ContactPage = () => {
                         <div className="my-4">
                             <Input
                                 name="subject"
+                                autoComplete="off"
+                                aria-label="Subject"
                                 value={subject}
                                 onChange={e=>onChange(e)}
                                 placeholder="Your Subject"
@@ -172,25 +199,30 @@ const ContactPage = () => {
                         <div className="my-4">
                             <MessageField
                                 name="message"
+                                rows={6}
                                 value={message}
                                 onChange={e=>onChange(e)}
                                 placeholder="Your Message"
+                                aria-label="Your message"
                                 required
                             />
                         </div>
                         <div className="my-4">
-                            <span style={{ display: error ? "inline" : "none" }}>
-                                <MDBAnimation type="slideInLeft">
-                                    <Toast kind={KIND.negative}>You need to verify before submitting</Toast>
-                                </MDBAnimation>
-                            </span>
                             <ReCAPTCHA
-                                sitekey={process.env.GATSBY_RECAPTCHA_SITEKEY || ''}
-                                onChange={(value)=>setCaptcha(value)}
+                                ref={recaptchaRef}
+                                sitekey={RECAPTCHA_SITE_KEY}
+                                theme={theme === THEME.light ? 'light' : 'dark'}
+                                onChange={onCaptchaChange}
+                                onExpired={() => setCaptcha(null)}
                             />
+                            {captchaError && (
+                                <p role="alert" style={{ marginTop: 8, fontSize: 14, color: "#f87171" }}>
+                                    Please tick the box above to confirm you&apos;re human.
+                                </p>
+                            )}
                         </div>
                         <div className="my-4 pb-5">
-                            <Button {...loadingState} endEnhancer={<ArrowRight size={24} />}>
+                            <Button type="submit" isLoading={btnLoading} endEnhancer={<ArrowRight size={24} />}>
                                 Send Message
                             </Button>
                         </div>

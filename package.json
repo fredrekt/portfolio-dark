@@ -5,9 +5,9 @@
   "version": "0.1.0",
   "author": "Fred Garingo <fredrickjohng7@gmail.com>",
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "baseui": "^9.88.0",
     "dotenv": "^16.6.1",
-    "emailjs-com": "^2.6.3",
     "gatsby": "^5.16.1",
     "gatsby-plugin-google-gtag": "^5.16.0",
     "gatsby-plugin-image": "^3.16.0",
