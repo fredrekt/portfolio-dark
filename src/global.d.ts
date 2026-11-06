@@ -109,22 +109,3 @@ declare module "react-linkedin-share-link" {
   const ShareLink: FC<ShareLinkProps>
   export default ShareLink
 }
-
-declare module "markdown-to-jsx" {
-  import { ComponentType, FC, ReactNode } from "react"
-
-  interface MarkdownProps {
-    children?: ReactNode
-    className?: string
-    style?: Record<string, string | number>
-    options?: {
-      overrides?: Record<
-        string,
-        { component?: string | ComponentType<any>; props?: Record<string, unknown> }
-      >
-    }
-  }
-
-  const Markdown: FC<MarkdownProps>
-  export default Markdown
-}
