@@ -8,7 +8,7 @@ const Frontend = () => (
       query FrontendSkills {
         gcms {
           skills(
-            where: { skillCategory_every: { category_contains: "frontend" } }
+            where: { skillCategory_some: { category_contains: "frontend" } }
             orderBy: id_ASC
           ) {
             id
