@@ -1,6 +1,5 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { MDBCol, MDBContainer } from "mdbreact"
 import Markdown from "markdown-to-jsx"
 import { Accordion, Panel } from "baseui/accordion"
 import { HeadingLarge, HeadingSmall, ParagraphMedium } from "baseui/typography"
@@ -30,10 +29,12 @@ const BlogCards = () => {
 
   const blogs = data.gcms.blogs.map(blog => (
     <Panel key={blog.id} title={blog.title}>
-      <MDBContainer>
+      <div>
         <div className="blog-header">
-          <HeadingLarge as="h2" marginTop="0" marginBottom="scale500">{blog.title}</HeadingLarge>
-          <div className="d-flex justify-content-between pb-4">
+          <HeadingLarge as="h2" marginTop="0" marginBottom="scale500">
+            {blog.title}
+          </HeadingLarge>
+          <div className="flex justify-between pb-4">
             <HeadingSmall as="h3" marginTop="0" marginBottom="0">
               {blog.blogCategory}
             </HeadingSmall>
@@ -45,16 +46,14 @@ const BlogCards = () => {
         <Markdown options={{ overrides: { p: { component: ParagraphMedium } } }}>
           {blog.content.markdown}
         </Markdown>
-      </MDBContainer>
+      </div>
     </Panel>
   ))
 
   return (
-    <>
-      <MDBCol size="8">
-        <Accordion renderAll>{blogs}</Accordion>
-      </MDBCol>
-    </>
+    <div className="w-full md:w-2/3">
+      <Accordion renderAll>{blogs}</Accordion>
+    </div>
   )
 }
 

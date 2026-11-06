@@ -1,5 +1,4 @@
 import { type HeadProps } from 'gatsby'
-import { MDBCol, MDBContainer, MDBRow } from 'mdbreact';
 import React, { useState, useEffect } from 'react'
 import HeaderPage from '../components/HeaderPage';
 import Navbar from '../components/Navbar';
@@ -7,6 +6,7 @@ import SEO from '../components/seo';
 import { ThemeProvider, styled } from 'baseui';
 import { THEME, getStoredTheme, type Theme } from '../types/theme';
 import { siteTheme } from '../theme/site';
+import { PageShell, PageWidth } from '../components/PageShell';
 import { SITE_URL } from '../constants/site';
 
 const PolicyCopy = styled('div', ({ $theme }) => ({
@@ -28,13 +28,11 @@ const PolicyPage = () => {
 
     return (
         <ThemeProvider theme={siteTheme(theme)}>
-        <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
+        <PageShell theme={theme}>
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
             } color={theme}/>
-            <MDBContainer fluid className="px-4 pb-5">
-                <MDBRow>
-                    <MDBCol md="11" lg="11">
+            <PageWidth className="pb-5">
                         <HeaderPage text="Privacy Policy"/>
                         <PolicyCopy>
                             <p>Your privacy is important to us. It is Fredrekt's policy to respect your privacy regarding any information we may collect from you across our website, <a href={SITE_URL}>{SITE_URL}</a>, and other sites we own and operate.</p>
@@ -47,10 +45,7 @@ const PolicyPage = () => {
                             <p>This policy is effective as of 12 July 2020.</p>
                             <p><a href="https://getterms.io" title="Generate a free privacy policy">Privacy Policy created with GetTerms.</a></p>
                         </PolicyCopy>
-                    </MDBCol>
-                </MDBRow>
-                <MDBRow className="my-4">
-                    <MDBCol md="11" lg="11">
+                <div className="my-8">
                         <HeaderPage text="Terms & Conditions" level="h2"/>
                         <PolicyCopy>
                             <h3>1. Terms</h3>
@@ -85,10 +80,8 @@ const PolicyPage = () => {
                             <p>These terms and conditions are governed by and construed in accordance with the laws of Cebu City, Philippines and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.</p>
                             <p><a href="https://getterms.io" title="Generate a free terms of use document">Terms of Use created with GetTerms.</a></p>
                         </PolicyCopy>
-                    </MDBCol>
-                </MDBRow>
-                <MDBRow className="my-4">
-                    <MDBCol md="11" lg="11">
+                </div>
+                <div className="my-8">
                         <HeaderPage text="Cookies Policy" level="h2"/>
                         <PolicyCopy>
                             <p>This is the Cookie Policy for Fred Garingo, accessible from {SITE_URL}/</p>
@@ -121,10 +114,9 @@ const PolicyPage = () => {
                                 <li>By visiting this link: {SITE_URL}/</li>
                             </ul>
                         </PolicyCopy>
-                    </MDBCol>
-                </MDBRow>
-            </MDBContainer>
-        </div>
+                </div>
+            </PageWidth>
+        </PageShell>
         </ThemeProvider>
     )
 }

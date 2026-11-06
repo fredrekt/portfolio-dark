@@ -5,6 +5,7 @@ const { SITE_URL } = require("./src/constants/site")
 const trackingIds = [process.env.GATSBY_GA_ID].filter(Boolean)
 
 const plugins = [
+  `gatsby-plugin-postcss`,
   `gatsby-plugin-image`,
   {
     resolve: `gatsby-source-filesystem`,

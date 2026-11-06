@@ -5,6 +5,7 @@ import { ThemeProvider } from 'baseui';
 import { styled } from 'baseui';
 import { DisplayLarge, LabelMedium } from 'baseui/typography';
 import Navbar from "../components/Navbar";
+import { PageShell } from "../components/PageShell";
 import { THEME, getStoredTheme, type Theme } from "../types/theme";
 import { eyebrowFont, heroFont, siteTheme } from "../theme/site";
 
@@ -37,7 +38,7 @@ const IndexPage = () => {
     
   return(
     <ThemeProvider theme={siteTheme(theme)}>
-      <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
+      <PageShell theme={theme}>
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
           } color={theme}/>
@@ -58,7 +59,7 @@ const IndexPage = () => {
           </div>
         </HeroContainer>
         </main>
-      </div>
+      </PageShell>
     </ThemeProvider>
   )
 }

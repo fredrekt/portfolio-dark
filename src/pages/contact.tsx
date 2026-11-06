@@ -15,7 +15,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { THEME, getStoredTheme, type Theme } from '../types/theme';
 import { siteTheme } from '../theme/site';
-import { MDBContainer, MDBRow, MDBCol } from 'mdbreact'
+import { PageShell, PageWidth } from '../components/PageShell';
 import {
     EMAILJS_PUBLIC_KEY,
     EMAILJS_SERVICE_ID,
@@ -139,17 +139,16 @@ const ContactPage = () => {
 
     return (
         <ThemeProvider theme={siteTheme(theme)}>
-        <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
+        <PageShell theme={theme}>
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
           } color={theme}/>
-            <MDBContainer fluid className="px-4">
+            <PageWidth>
                 <HeaderPage text="Get in Touch"/>
                 <ParagraphLarge maxWidth="36rem" marginTop="0" marginBottom="scale800">
                     Tell me about the product.
                 </ParagraphLarge>
-                <MDBRow>
-                    <MDBCol md="8" lg="8">
+                <div className="md:w-2/3">
                         <form onSubmit={onSubmit} aria-busy={btnLoading}>
                         <div className="mb-4">
                             <Input
@@ -216,7 +215,7 @@ const ContactPage = () => {
                                 onExpired={() => setCaptcha(null)}
                             />
                             {captchaError && (
-                                <p role="alert" style={{ marginTop: 8, fontSize: 14, color: "#f87171" }}>
+                                <p role="alert" className="mt-2 text-sm text-red-400">
                                     Please tick the box above to confirm you&apos;re human.
                                 </p>
                             )}
@@ -227,11 +226,10 @@ const ContactPage = () => {
                             </Button>
                         </div>
                         </form>
-                    </MDBCol>
-                </MDBRow>
-            </MDBContainer>
+                </div>
+            </PageWidth>
             <ToastContainer/>
-        </div>
+        </PageShell>
         </ThemeProvider>
     )
 }

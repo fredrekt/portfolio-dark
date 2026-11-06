@@ -1,8 +1,7 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import { MDBCol } from "mdbreact"
 import Moment from "react-moment"
-import { HeadingMedium, HeadingSmall, HeadingXSmall } from "baseui/typography"
+import { HeadingSmall } from "baseui/typography"
 import type { CertificatesQuery } from "../../types/cms"
 import type { Theme } from "../../types/theme"
 
@@ -11,9 +10,7 @@ interface CertificatesProps {
 }
 
 const Certificates = ({ theme }: CertificatesProps) => {
-  const color = {
-    borderLeft: `${theme === "light" ? "1px solid #000" : "1px solid #fff"}`,
-  }
+  const rule = theme === "light" ? "border-black" : "border-white"
 
   return (
     <StaticQuery<CertificatesQuery>
@@ -31,26 +28,26 @@ const Certificates = ({ theme }: CertificatesProps) => {
         }
       `}
       render={data => (
-        <>
+        <div>
           {data.gcms.certificates.map(certificate => (
-            <MDBCol key={certificate.id} className="my-4" md="12" lg="12">
-              <div style={color} className="resume-container">
-                <div style={{ marginLeft: `1rem` }} className="resume-content">
-                  <HeadingMedium as="h3" marginTop="0" marginBottom="scale200">
+            <div key={certificate.id} className="my-8 first:mt-0">
+              <div className={`resume-container border-l pl-4 ${rule}`}>
+                <div className="resume-content">
+                  <p className="mb-1 text-sm font-semibold uppercase tracking-[0.14em]">
                     <Moment format="YYYY">{certificate.date}</Moment>
-                  </HeadingMedium>
-                  <HeadingSmall as="h4" marginTop="0" marginBottom="scale100">{certificate.company}</HeadingSmall>
-                  <HeadingXSmall as="h5" marginTop="0" marginBottom="scale300">{certificate.title}</HeadingXSmall>
-                  <ul className="list-unstyled skills-list">
+                  </p>
+                  <HeadingSmall as="h3" marginTop="0" marginBottom="scale100">{certificate.company}</HeadingSmall>
+                  <p className="mb-3 text-base">{certificate.title}</p>
+                  <ul className="list-disc space-y-1 pl-4 text-sm leading-relaxed">
                     {certificate.description.map(desc => (
-                      <li>{desc}</li>
+                      <li key={desc}>{desc}</li>
                     ))}
                   </ul>
                 </div>
               </div>
-            </MDBCol>
+            </div>
           ))}
-        </>
+        </div>
       )}
     />
   )

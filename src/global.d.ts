@@ -5,20 +5,6 @@ declare module "*.png" {
   export default src
 }
 
-declare module "mdbreact" {
-  export const MDBContainer: any
-  export const MDBRow: any
-  export const MDBCol: any
-  export const MDBNavbar: any
-  export const MDBNavbarNav: any
-  export const MDBCollapse: any
-  export const MDBNavItem: any
-  export const MDBIcon: any
-  export const MDBAnimation: any
-  export const MDBView: any
-  export const MDBMask: any
-}
-
 declare module "react-google-recaptcha" {
   import { Component, Ref } from "react"
 
@@ -62,6 +48,8 @@ declare module "react-progressive-image" {
   import { ReactNode } from "react"
 
   interface ProgressiveImageProps {
+    src: string
+    placeholder: string
     className?: string
     children?: (src: string, loading: boolean) => ReactNode
   }

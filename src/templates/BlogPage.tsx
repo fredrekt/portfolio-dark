@@ -3,12 +3,12 @@ import { graphql, type HeadProps } from 'gatsby';
 import { ThemeProvider } from 'baseui';
 import Navbar from '../components/Navbar';
 import SEO from '../components/seo';
-import { MDBContainer, MDBRow } from 'mdbreact';
 import BlogHeader from '../components/blog/BlogHeader';
 import BlogBody from '../components/blog/BlogBody';
 import type { BlogPageQuery } from '../types/cms';
 import { THEME, getStoredTheme, type Theme } from '../types/theme';
 import { siteTheme } from '../theme/site';
+import { PageShell, PageWidth } from '../components/PageShell';
 
 interface BlogPageProps {
     data: BlogPageQuery
@@ -23,21 +23,19 @@ const BlogPage = ({ data: { gcms: { blog } } }: BlogPageProps) => {
 
     return (
         <ThemeProvider theme={siteTheme(theme)}>
-        <div style={{ background: theme === THEME.light ? "#fff" : "#000", color: theme === THEME.light ? "#000" : "#fff" }} className="wrapper">
+        <PageShell theme={theme}>
         <Navbar onClick={() =>
             setTheme(theme === THEME.light ? THEME.dark : THEME.light)
           } color={theme}/>
-          <MDBContainer fluid className="px-4">
+          <PageWidth>
             {blog ? (
-              <article>
-                <MDBRow className="py-5">
+              <article className="grid gap-10 py-12 md:grid-cols-12">
                     <BlogHeader id={blog.id} theme={theme} title={blog.title} date={blog.createdAt} desc={blog.description}/>
                     <BlogBody content={blog.content.markdown}/>
-                </MDBRow>
               </article>
             ) : null}
-          </MDBContainer>
-        </div>
+          </PageWidth>
+        </PageShell>
         </ThemeProvider>
     )
 }
